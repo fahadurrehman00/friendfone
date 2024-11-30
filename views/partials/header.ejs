@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Friend Fone | An Education & Medical Software</title>
+		<link
+			rel="icon"
+			type="image/svg"
+			href="https://mediaanduserfiles.s3.amazonaws.com/favicon_qgcraf_v6duoh.svg"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" />
+		<link rel="stylesheet" href="/stylesheets/main.css" />
+		<link rel="stylesheet" href="/stylesheets/new/header.css" />
+		<link rel="stylesheet" href="/stylesheets/new/footer.css" />
+		<style>
+			.main_view {
+				background-image: none;
+				height: auto;
+			}
+			.two_buttons {
+				display: none;
+			}
+			.big_button_link:hover {
+				background-color: #157347;
+			}
+		</style>
+		<script src="//code.tidio.co/oohi4ck9zmzjoekpsft3cp6h9cnitwej.js" async></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171459783-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "UA-171459783-1");
+		</script>
+	</head>
+	<body>
+		<%- include("./myHeader") %>
+		
+		<div class="container"></div>
+		<% if(error && error.length > 0){ %>
+		<div class="alert alert-danger" role="alert"><%= error %></div>
+		<% } %> <% if(success && success.length > 0){ %>
+		<div class="alert alert-success" role="alert"><%= success %></div>
+		<% } %>
+		<script type="text/javascript">
+			const ham = document.querySelector('#ham');
+			const mobile_nav = document.querySelector('.nav_lists');
+
+			ham.addEventListener('click', (e) => {
+				e.preventDefault();
+				mobile_nav.classList.toggle('extend');
+			});
+			document.addEventListener("DOMContentLoaded", (e) => { 
+				const copyright = document.querySelector('#copyright p');
+				copyright.textContent = `© Copyright ${new Date().getFullYear()} FriendFone. All Rights Reserved.`
+			});
+		</script>
+</body>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+	</script>
+</html>

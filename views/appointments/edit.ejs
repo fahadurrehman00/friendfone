@@ -1,0 +1,222 @@
+<% if(currentUser && appointment.author.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+
+<%- include ("../partials/header") %>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+	
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/stylesheets/appointment.css">
+
+<style>
+	.form-signin{
+		max-width: 500px;
+	}
+	label{
+		color: white;
+	}
+	p{
+		color: white;
+	}
+		#datetimepicker1 > input{
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+	.input-group-addon > span{
+		border-top-right-radius: 10px !important;
+		border-bottom-right-radius: 10px !important;
+		background-color: #941c99 !important;
+		color: white !important;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="register mt-3 mb-0">
+				Edit ATN
+			</h4>
+			<form action="/appointments/<%= appointment._id %>?_method=PUT" method="POST" class="form-signin appointment-form">
+								<input type="hidden" id="user_id" name="user_id" value="<%= appointment.author %>">
+				<div class="form-group">
+				  <label for="name" class="black-headings">Notification Title</label>
+				  <input class="form-control" id="name" type="text" name="appointmentName" 
+						 placeholder="Appointment Name" required data-parsley-maxlength='20' 
+						 data-parsley-maxlength-message="This field can't have more than 20 characters" 
+						 value="<%= appointment.appointmentName %>">
+				</div>
+				
+				<div class="form-group">
+				<label for="inputPhoneNumber">Phone number</label>
+				<input class="form-control" id="inputPhoneNumber" type="number" name="phoneNumber" 
+					   placeholder="phone number" required readonly value="<%= appointment.phoneNumber %>">		
+				</div>
+				
+				<div class="form-group">
+					<label class="black-headings">Appointment Date and Time</label>
+        			<div class="input-group date" id="datetimepicker1">
+					<input type="text" class="form-control" name="appointmentTime" 
+					   value="moment(appointment.time).format('MM-DD-YYYY hh:mma')">
+        			<span class="input-group-addon">
+        				<span class="fa fa-calendar form-control pt-3 pb-3" style="border-radius: 0"></span>
+        			</span>
+        			</div>
+   				</div>
+				
+				<div class="form-group sr-only">
+					<label>Time to Notify</label>
+					<select class="form-control sr-only" id="selectDelta" name="notification" required>
+						<option value='1' selected>Before 1 minute</option>
+					</select>
+				</div>
+
+				<div class="form-group repeat-atn">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label mr-2" for="repeatAtn">Reapting ATN?</label>
+						<input class="form-check-input" type="checkbox" id="repeatAtn" name="repeatAtn" <% if ( appointment.repeatAtn ) { %> checked <% } %>>
+					</div>
+				</div>
+
+				<div class="form-group repeat-type <% if ( ! appointment.repeatAtn ) { %> d-none <% } %>">
+					<div class="text-white">Repeat Type</div>
+					<div class="form-check form-check-inline mt-2 border py-2 px-3 rounded">
+						<small class="text-white font-weight-bold">Weekly</small>
+						<label class="switch mx-4 my-0">
+							<input type="checkbox" id="repeatType" name="repeatType" <% if ( appointment.repeatType == 2 ) { %> checked <% } %>>
+							<span class="slider round"></span>
+						</label>
+						<small class="text-white font-weight-bold">Monthly</small>
+					</div>
+				</div>
+
+				<div class="form-group repeating-toggle <% if ( ! appointment.repeatAtn ) { %> d-none <% } %>">
+					<p class="repeating-days mb-2 text-white <% if ( appointment.repeatType == 2 ) { %> d-none <% } %>">Repeat Days</p>
+					<p class="repeating-day mb-2 text-white <% if ( appointment.repeatType == 1 ) { %> d-none <% } %>">Repeat Day</p>
+
+					<div class="repeat-toggle border py-2 px-3 rounded text-white font-weight-bold">
+						<div class="repeat-weekly <% if ( appointment.repeatType == 2 ) { %> d-none <% } %>">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1" name="appointmentDays" <% if(appointment.appointmentDays.includes(1)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox1">Mon</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2" name="appointmentDays" <% if(appointment.appointmentDays.includes(2)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox2">Tue</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3" name="appointmentDays" <% if(appointment.appointmentDays.includes(3)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox3">Wed</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="4" name="appointmentDays" <% if(appointment.appointmentDays.includes(4)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox4">Thu</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="5" name="appointmentDays" <% if(appointment.appointmentDays.includes(5)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox5">Fri</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="6" name="appointmentDays" <% if(appointment.appointmentDays.includes(6)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox6">Sat</label>
+							</div>
+						
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="7" name="appointmentDays" <% if(appointment.appointmentDays.includes(7)){ %> checked <% } %> />
+								<label class="form-check-label" for="inlineCheckbox7">Sun</label>
+							</div>
+						</div>
+						<div class="repeat-monthly <% if ( appointment.repeatType == 1 ) { %> d-none <% } %>">
+							Repeats on the <span class="repeat-day"></span> of each month. If the month has shorter days, the ATN will send on the last day of the month.
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="form-group">
+					<!--escalation-->
+						<div class="form-group mt-3">
+						<label class="black-headings">Escalation:</label><br>
+							
+				<p class="text-capitalize"><span class="black-headings" style="text-decoration: underline;">Previously Selected:</span>
+				<span><%=appointment.escalation %></span><br>		
+						
+						<select name="escalation" class="mt-3 mb-0">
+							<option>Contact ECs</option>
+							<option>Contact School</option>
+							<option>Contact Friend</option>
+							<option>Rapid Call</option>
+						</select>
+						</div>
+					
+					
+
+					<div class="form-group sr-only">	
+						<label for="selectTimeZone">Time Zone</label>
+						<select class="form-control" id="selectTimeZone" name="timeZone" 
+								value="<%= appointment.timeZone %>" required>
+							<option value="<%= appointment.timeZone %>"><%= appointment.timeZone %>
+							</option>
+						</select>
+					</div>
+					
+				</div>
+
+				<div class="form-group d-flex justify-content-between">
+					<button type="button" class="btn btn-default col-md-4 my-3" onclick="window.history.back()">Back</button>
+					<button type="submit" class="btn btn-success col-md-4 my-3">Update</button>
+				</div>
+				
+			</form>
+		</div>
+	
+	</div>	
+</div>
+		
+
+    <!-- JavaScript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	  
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script src="/scripts/appointment.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datetimepicker1').datetimepicker({
+			// Formats
+			// follow MomentJS docs: https://momentjs.com/docs/#/displaying/format/
+			sideBySide: true,
+			format: 'MM-DD-YYYY hh:mma',
+
+			// Your Icons
+			// as Bootstrap 4 is not using Glyphicons anymore
+			icons: {
+				time: 'fa fa-clock-o',
+				date: 'fa fa-calendar',
+				up: 'fa fa-chevron-up',
+				down: 'fa fa-chevron-down',
+				previous: 'fa fa-chevron-left',
+				next: 'fa fa-chevron-right',
+				today: 'fa fa-check',
+				clear: 'fa fa-trash',
+				close: 'fa fa-times'
+			}
+		});
+	});
+	</script>
+
+<%- include ("../partials/newFooter") %>
+
+<% } %>

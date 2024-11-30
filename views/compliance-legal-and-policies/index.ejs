@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Friend Fone | An Education & Medical Software</title>
+	<link
+		rel="icon"
+		type="image/svg"
+		href="https://res.cloudinary.com/friendfone/image/upload/v1611832230/favicon_qgcraf_v6duoh.svg"
+	/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/		bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"
+	>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/stylesheets/new/header.css" />
+	<link rel="stylesheet" href="/stylesheets/new/main.css" />
+	<link rel="stylesheet" href="/stylesheets/new/responsive.css" />
+	<link rel="stylesheet" href="/stylesheets/new/footer.css" />
+	<link rel="stylesheet" href="/stylesheets/new/concierge.css" />
+	<script src="//code.tidio.co/oohi4ck9zmzjoekpsft3cp6h9cnitwej.js" async></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171459783-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "UA-171459783-1");
+	</script>
+	<style>
+		.main_view {
+			height: 320px;
+			margin-bottom: 1.5em;
+		}
+
+		.two_buttons {
+			width: auto;
+			text-align: center;
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			margin-top: 2em;
+		}
+
+		.two_buttons .main_header_one {
+			font-size: 2.5em;
+		}
+
+		.two_buttons .main_header_two {
+			font-size: 1em;
+		}
+
+		.compliance-legal-and-policies p,
+		.compliance-legal-and-policies ul,
+		.compliance-legal-and-policies ol {
+			/* font-size: 14px;
+			font-weight: 400; */
+			margin-left: 1.5em;
+		}
+
+		.compliance-legal-and-policies ul,
+		.compliance-legal-and-policies ol {
+			margin-left: 3em;
+			list-style-type: initial;
+		}
+
+		.compliance-legal-and-policies * {
+			text-align: left;
+		}
+
+		.compliance-legal-and-policies a {
+			color: #1e761e;
+		}
+	</style>
+</head>
+<body>
+	<%- include ("../partials/myHeader") %>
+	<%- include ("../partials/modal") %>
+	<section class="container compliance-legal-and-policies">
+		<div class="row">
+			<div class="col-8 mx-auto">
+				<p>In order to ensure compliance with Arvo Growth Partners, HIPAA, COPPA, and other entities that we make policies around, a list of our policies may be found and accessed below. These policies are subject to change at any time.</p>
+
+
+				<ul>
+					<li>Arvo Growth Partners - <a href="http://arvogp.com/" target="_blank">Click Here</a></li>
+					<li>End-User License Agreement - <a href="https://docs.google.com/document/d/1Jz3dMG1WOolR9_Udlzv45Od69NCmTlANYiK-RXfZ6BU/edit?usp=sharing/" target="_blank">Click Here</a></li>
+					<li>Terms Of Service - <a href="https://docs.google.com/document/d/1Y7zvP1-cPopOJPeneJmI5MPBr_ym3Ae966kT2242PIk/edit?usp=sharing/" target="_blank">Click Here</a></li>
+					<li>Privacy & Security Policy - <a href="https://docs.google.com/document/d/1fISjJtlEvo5O2wjz2EVoS4VwQctHOhdYpch97d8gDNw/edit?usp=sharing/" target="_blank">Click Here</a></li>
+					<li>Breach Notification Protocol - <a href="https://docs.google.com/document/d/1SokTOQQGPa_nNguctzpmSJAUpjxyS7DATruW-uGUiYg/edit?usp=sharing/" target="_blank">Click Here</a></li>
+					<li>Security Safeguards - <a href="https://docs.google.com/document/d/15RhPy4ikJxApVlFzAt8AWbGJ8IL0ZevZk6DI7feCfI0/edit?usp=sharing/" target="_blank">Click Here</a></li>
+				</ul>
+				
+			</div>
+		</div>
+	</section>
+	<%- include ("../partials/newFooter") %>
+	<script type="text/javascript">
+		const ham = document.querySelector('#ham');
+		const mobile_nav = document.querySelector('.nav_lists');
+		const copyright = document.querySelector('#copyright p');
+
+		ham.addEventListener('click', (e) => {
+			e.preventDefault();
+			mobile_nav.classList.toggle('extend');
+		});
+
+	</script>
+</body>
+</html>

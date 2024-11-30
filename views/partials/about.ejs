@@ -1,0 +1,39 @@
+<section class="about_section about_modify">
+		
+		<div id="about" class="container-fluid">
+			<div class="row">
+				<div class="about_part_one col-md-6 col-sm-12">
+					<div class="skew_elem"></div>
+					<div>
+						<h1 class="big_header">A Little About FriendFone</h1>
+						<p>
+							FriendFone is a verified check-in system designed to
+							provide users with additional safety, productivity, and 
+							improved health. Check out this video to learn a bit more 
+							about what we do! 
+						</p>
+						<% if (!currentUser) { %>
+							<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+								Get Signed Up
+							</a>
+						<% } else { %>
+							<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+								Visit Dashboard
+							</a>
+						<% } %>
+					</div>
+				</div>
+				<div class="about_part_two col-md-6 col-sm-12">
+					<div class="main_child">
+						<div class="second_child">
+							<div>
+								<a role="button" data-bs-toggle="modal" data-bs-target="#videoModal">
+									<img src="https://mediaanduserfiles.s3.amazonaws.com/download_2_1_pquxvm.png" alt="play button of video">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

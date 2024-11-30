@@ -1,0 +1,51 @@
+<%- include ("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+<style>
+input[type="text"],[type="email"] ,[type="password"],[type="tel"]
+{
+	width: 100% !important;
+
+}
+.back-btn {
+    border: 1px solid white;
+    color: white !important;
+    border-radius: 10px !important;
+}
+
+.fof {
+    font-size: 8em;
+    animation: type .5s alternate infinite;
+    text-align: center;
+    color
+    : #fff;
+}
+.fofp {
+    font-size: 1em;
+    text-align: center;
+    color: #fff;
+}
+
+@keyframes type{
+    from{box-shadow: inset -3px 0px 0px #888;}
+    to{box-shadow: inset -3px 0px 0px transparent;}
+}
+</style>
+<div class="user">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="fof mb-3">404</h3>
+            <p class="fofp mb-3">This page is on vacation. Would you like to visit our homepage?</p>
+            <div class="form-signin frame">
+                <a class="btn btn-lg btn-block btn-info" href="/home" role="button">Yes, back to home</a>
+                <a class="btn btn-lg btn-block btn-danger" href="/home" role="button">Yes, but in red</a>
+            </div>
+        </div>	
+    </div>
+</div>
+
+<!--latest jquery just for hamburger menu of navbar in mobile view --->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<%- include ("./partials/newFooter") %>

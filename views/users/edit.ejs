@@ -1,0 +1,229 @@
+<% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>	
+
+<%- include ("../partials/header") %>
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+
+<!----------NEW PAGE CODE------>
+
+<style>
+	.signin-timeZone{
+		padding-top: 0px !important;
+		padding-bottom: 13px !important;
+	}
+	textarea{
+		background: transparent !important;
+	}
+	.note{
+		color: white;
+	}
+</style>
+
+	
+<div class="user">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="register mt-5 h3">Edit Profile Info</h1>
+				<form class="form-signin frame" action="/users/<%= user._id %>?_method=PUT" 
+					  method="POST" enctype="multipart/form-data">
+			</div>
+		</div>
+			
+			<!--Profile Picture -->
+			
+				<div class="text-center">
+					
+			
+					<label for="image" class="pic">
+				
+						
+					<img class="bd-placeholder-img rounded-circle" width="169px" height="175px" 
+				         src="<%= user.image %>" alt="Profile image" />
+					
+					</label>
+					<input type="file" class="sr-only" accept="image/*" name="image" id="image">
+				</div>
+					
+			
+			<!--User's Name, Email, and Phone Number-->
+		<div class="row mt-2 mx-0 p-0 justify-content-md-center">
+			<div class=" col-md-3 m-0 p-0">
+				<label class="sr-only" for="firstName"></label>
+		<input type="text" class="form-control" placeholder="First Name" name="firstName" id="firstName" 
+			   value="<%= user.firstName %>" readonly>
+				<label class="sr-only" for="lastName"></label>
+		<input type="text" class="form-control" placeholder="Last Name" name="lastName" id="lastName" 
+			   value="<%= user.lastName %>" readonly>
+				<label for="inputEmail" class="sr-only">Email</label>
+		 <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" name="email" 
+				value="<%= user.email %>" readonly>
+  		
+		<label  class="sr-only" for="phoneNumber">Phone Number</label>
+<input type="tel" id="phoneNumber" class="form-control us-phonenumber-mask" placeholder="Phone" name="phoneNumber" value="<%= user.username %>" readonly>
+				
+				<label  class="sr-only" for="schoolPhone">School Phone Number</label>
+<input type="tel" id="schoolPhone" class="form-control us-phonenumber-mask" placeholder="School Phone" name="schoolPhone" value="<%= user.schoolPhone %>">
+
+				
+			<!--Time Zone-->
+					
+				<div class="form-control picdiv signin-timeZone">
+					<label for="selectTimeZone" class="picdiv">Time Zone</label>
+					<select id="selectTimeZone" class="form-control" name="timeZone">
+						<option><%= user.timeZone%></option>
+						<option class="sr-only" value="<%= timeZones[579] %>"><%= timeZones[579] %></option>
+						<option class="sr-only" value="<%= timeZones[581] %>"><%= timeZones[581] %></option>
+						<option class="sr-only" value="<%= timeZones[585] %>"><%= timeZones[585] %></option>
+						<option class="sr-only" value="<%= timeZones[586] %>"><%= timeZones[586] %></option>
+					</select>
+				</div>
+			
+				
+			</div>
+			
+				<!-- User Pin, Street Address, City, State, -->
+			
+			<div class="col-md-3 m-0 p-0">
+				<label class="sr-only" for="pin"></label>
+		<input type="text" class="form-control" placeholder="Pin" name="pin" value="<%= user.pin %>" id="pin" maxlength="4">
+				<label class="sr-only" for="streetAdress"></label>
+		<input type="text" class="form-control" placeholder="Street Address" name="streetAddress" 
+			   value="<%= user.streetAddress %>" id="streetAddress">
+			<label class="sr-only" value="" for="secondAddress"></label>
+		<input type="text" class="form-control" placeholder="Street Address 2" name="secondAddress" 
+			   value="<%= user.secondAddress %>" id="secondAddress">
+				<label class="sr-only" for="city"></label>
+		<input type="text" class="form-control" placeholder="City" name="city" value="<%= user.city %>" id="city">
+
+		<label class="sr-only" for="zipCode"></label>
+		<input type="text" class="form-control pt-3" placeholder="Zip Code" name="zipCode" value="<%= user.zipCode %>" id="zipCode">
+		
+		<label class="sr-only" for="state"></label>
+		<input type="text" class="form-control" placeholder="State" name="state" id="state" value="<%= user.state %>">
+
+		<label  class="sr-only" for="friendPhone">Friend Phone Number</label>
+		<input type="tel" id="friendPhone" class="form-control us-phonenumber-mask" placeholder="Friend's Phone" name="friendPhone" value="<%= user.friendPhone %>">
+
+			
+		</div>
+			
+	</div>
+				<h3 class="register mt-5 h3">Edit EC1</h3>
+			
+		<!--EC1 First Name, Last Name, Email ID, Phone Number, Relation, EC1 Street Address, City, State and Zip Code -->	
+			
+		<div class="row mt-2 mx-0 p-0 justify-content-md-center">
+			
+			<div class=" col-md-3 m-0 p-0">
+			
+				<label class="sr-only" for="ec1firstName"></label>
+		<input type="text" class="form-control" placeholder="First Name" name="ec1firstName" value="<%= user.ec1firstName %>" id="ec1firstName">
+				<label class="sr-only" for="ec1lastName"></label>
+		<input type="text" class="form-control" placeholder="Last Name" name="ec1lastName" value="<%= user.ec1lastName %>" id="ec1lastName">
+				<label for="ec1inputEmail" class="sr-only">Email</label>
+		 <input type="email" id="ec1inputEmail" class="form-control" placeholder="Email Address" name="ec1email" 
+				value="<%= user.ec1email %>">
+		<label  class="sr-only" for="ec1phoneNumber">Phone Number</label>
+		<input type="tel" id="ec1phoneNumber" class="form-control us-phonenumber-mask" placeholder="Phone" 	
+			   name="ec1phoneNumber" value="<%= user.ec1phoneNumber %>">
+				<label class="sr-only" for="ec1Relation"></label>
+		<input type="text" class="form-control" placeholder="Relation" name="ec1Relation" 
+			   value="<%= user.ec1Relation%>" id="ec1Relation">
+			</div>
+			
+			<div class="col-md-3 mr-0 p-0">
+				<label class="sr-only" for="ec1streetAdress"></label>
+		<input type="text" class="form-control" placeholder="Street Address" name="ec1streetAdress" value="<%= user.ec1streetAdress %>" id="ec1streetAdress">
+			<label class="sr-only" for="ec1secondary"></label>
+		<input type="text" class="form-control" placeholder="Secondary" name="ec1secondary" value="<%= user.ec1secondary %>" id="ec1secondary">
+				<label class="sr-only" for="ec1city"></label>
+		<input type="text" class="form-control" placeholder="City" name="ec1city" value="<%= user.ec1city %>" id="ec1city">
+			<label class="sr-only" for="ec1state"></label>
+		<input type="text" class="form-control" placeholder="State" name="ec1state" id="ec1state" 
+			   value="<%= user.ec1state %>">
+			<label class="sr-only" for="ec1zipCode"></label>
+		<input type="text" class="form-control" placeholder="Zip Code" name="ec1zipCode" id="ec1zipCode" 
+			   value="<%= user.ec1zipCode%>">
+			<label class="sr-only" for="memo"></label>
+			</div>
+			</div>
+			
+			
+		<!--------EC 2--------->
+			
+			<h3 class="register mt-5 h3">Edit EC2</h3>
+			<div class="row mt-2 mx-0 p-0 justify-content-md-center">
+				<div class=" col-md-3 m-0 p-0">
+				<label class="sr-only" for="firstName"></label>
+		<input type="text" class="form-control" placeholder="First Name" name="ec2firstName" 
+			   value="<%= user.ec2firstName %>" id="firstName">
+				<label class="sr-only" for="lastName"></label>
+		<input type="text" class="form-control" placeholder="Last Name" name="ec2lastName" value="<%= user.ec2lastName %>" id="lastName">
+				<label for="ec2inputEmail" class="sr-only">Email</label>
+		 <input type="email" id="ec2inputEmail" class="form-control" value="<%= user.ec2email %>" placeholder="Email Address" name="ec2email">
+				<label  class="sr-only" for="ec2phoneNumber">Phone Number</label>
+		<input type="tel" id="ec2phoneNumber" class="form-control us-phonenumber-mask" placeholder="Phone" 	
+			   name="ec2phoneNumber" value="<%= user.ec2phoneNumber %>">
+				<label class="sr-only" for="ec2Relation"></label>
+		<input type="text" class="form-control" placeholder="Relation" name="ec2Relation" 
+			   value="<%= user.ec2Relation %>" id="ec2Relation">
+				</div>
+			
+			<div class="col-md-3 m-0 p-0">
+			    <label class="sr-only" for="ec2streetAdress"></label>
+		<input type="text" class="form-control" placeholder="Street Address" name="ec2streetAdress" 
+			   value="<%= user.ec2streetAdress %>" id="ec2streetAdress">
+				<label class="sr-only" for="ec2secondary"></label>
+		<input type="text" class="form-control" placeholder="Secondary" name="ec2secondary" value="<%= user.ec2secondary %>" id="ec2secondary">
+				<label class="sr-only" for="ec2city"></label>
+		<input type="text" class="form-control" placeholder="City" name="ec2city" id="ec2city" value="<%= user.ec2city %>">
+				<label class="sr-only" for="ec2state"></label>
+		<input type="text" class="form-control" placeholder="State" name="ec2state" value="<%= user.ec2state %>" id="ec2state">
+				<label class="sr-only" for="ec2zipCode"></label>
+		<input type="text" class="form-control" placeholder="Zip Code" name="ec2zipCode" value="<%= user.ec2zipCode %>" id="ec2zipCode">
+				<label class="sr-only" for="memo"></label>
+			</div>
+		</div>
+			
+			
+			
+		<!--Submit Form Here-->
+		
+			<button class="register2 col-md-6 btn btn-lg btn-success btn-block mx-auto" type="submit">Update Profile</button>
+		 <a href="/users/<%= user._id %>" class="register2 col-md-6 btn btn-lg btn-dark btn-block mb-5 mx-auto">Go Back</a>
+
+		</form>
+
+	</div>
+</div>
+
+
+	
+<!--latest jquery just for hamburger menu of navbar in mobile view --->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+
+document.querySelector('#pin').addEventListener( 'input', e => e.target.value = e.target.value.replace(/\D/g, '') );
+</script>
+
+<!------NEW PAGE CODE -------->
+
+	
+<%- include ("../partials/newFooter") %>
+
+	<% } %>

@@ -1,0 +1,149 @@
+/*change the main section bg fro customer page*/
+.main_view {
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/Blog2_uw9ssn.png');
+}
+
+.customer h3 {
+	color: #000000;
+	font-size: 1.2em; 
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+.customer p {
+	min-height: 8em;
+	color: #000000;
+	font-size: 1em;
+	font-weight: bold;
+}
+.customer .big_button_link{
+	color: #FFFFFF;
+	padding: 0.7em 1.5em;
+	border-radius: 1.5em;
+	font-size: .8em;
+	text-align: center;
+}
+
+.services {
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/a176716205951f374b88a00d77d89a3e_1_jcunu3.png') center no-repeat;
+	background-size: cover;
+}
+
+.services h3 {
+	min-height: 4em;
+}
+
+.service_parent {
+	background-color: rgba(219,0,255,0.3);
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.service_parent>div {
+	width: 20%;
+	padding: 1em .5em;
+}
+
+.service_parent>div a {
+	margin-top: 1em;
+}
+
+.service_parent>div:nth-child(1){
+	background-color: rgba(255,145,0,0.7);
+}
+
+.service_parent>div:nth-child(2){
+	background-color: rgba(36,44,106,0.7);
+}
+.service_parent>div:nth-child(3){
+	background-color: rgba(237,108,112,0.7);
+}
+.service_parent>div:nth-child(4){
+	background-color: rgba(135,201,100,0.7)
+}
+.service_parent>div:nth-child(5){
+	background-color: rgba(202,89,167,0.7);
+}
+.service_parent>div:nth-child(6){
+	background-color: rgba(237,108,112,0.7);
+}
+.service_parent>div:nth-child(7){
+	background-color: rgba(135,201,100,0.7);
+}
+.service_parent>div:nth-child(8){
+	background-color: rgba(202,89,167,0.7);
+}
+.service_parent>div:nth-child(9){
+	background-color: rgba(255,145,0,0.7);
+}
+.service_parent>div:nth-child(10){
+	background-color: rgba(36,44,106,0.7);
+}
+.service_details {
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/a176716205951f374b88a00d77d89a3e_1_jcunu3.png') center no-repeat;
+	background-size: cover;
+}
+
+.service_details>div>div> p,h3{
+	padding-top: 1em; 
+}
+
+.service_details>div>div> a {
+	padding-bottom: 5em; 
+}
+
+.service_details_parent>div>div:nth-child(1){
+	background-color: rgba(36,44,106,0.7);
+}
+.service_details_parent>div>div:nth-child(2){
+	background-color: rgba(255,255,255,0.7);
+}
+.service_details_parent>div>div:nth-child(3){
+	background-color: rgba(135,201,100,0.7);
+}
+.service_details_parent>div>div:nth-child(4){
+	background-color: rgba(237,108,112,0.7);
+}
+.service_details_parent>div>div:nth-child(5){
+	background-color: rgba(255,145,0,0.7);
+}
+.service_details_parent>div>div:nth-child(6){
+	background-color: rgba(255,255,255,0.7);
+}
+.service_details_parent>div>div:nth-child(7){
+	background-color: rgba(255,255,255,0.7);
+}
+.service_details_parent>div>div:nth-child(8){
+	background-color: rgba(135,201,100,0.7);
+}
+.service_details_parent>div>div:nth-child(9){
+	background-color: rgba(202,89,167,0.7);
+}
+.service_details_parent>div>div:nth-child(10){
+	background-color: rgba(255,145,0,0.7);
+}
+
+@media only screen and (max-width: 600px) {
+	.customer .big_button_link{
+		font-size: 1.2em;
+	}
+
+	.customer h3 {
+		font-size: 1.4em;
+	}
+	.customer p {
+		font-size: 1.3em;
+	}
+
+	.service_parent>div {
+		width: 100%;
+		padding: 1.5em .5em;
+	}
+	.service_parent>div h3 {
+		padding-top: 0;
+	}	
+	.service_details_parent>div>div:nth-child(6){
+		background-color: rgba(36,44,106,0.7);
+	}
+
+}

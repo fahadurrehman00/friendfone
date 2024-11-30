@@ -1,0 +1,82 @@
+/*change the main section bg*/
+
+.main_view {
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/Blog2_uw9ssn.png');
+}
+
+.blog h3 {
+	color: #000000;
+	/*font-size: 1.2em;*/
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+.blog p {
+	color: #000000;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+
+.blog_big_button_link{
+	color: #FFFFFF;
+	padding: 0.7em 1.5em;
+	border-radius: 1.5em;
+	font-size: .8em;
+	text-align: center;
+}
+
+.blog {
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/a176716205951f374b88a00d77d89a3e_1_jcunu3.png') center no-repeat;
+	background-size: cover;
+}
+
+.blog_parent>div>div {
+	position: relative;
+}
+
+.blog_parent>div>div h3{
+	padding-top: .4em;
+}
+
+.blog_parent>div>div p {
+	position: relative;
+	padding-bottom: 4em;
+}
+
+.btn_container {
+	margin-bottom: .3em;
+}
+
+.blog_parent>div>div:nth-child(1){
+	background-color: rgba(255,145,0,0.7);
+}
+.blog_parent>div>div:nth-child(2){
+	background-color: rgba(255,255,255,0.7);
+}
+.blog_parent>div>div:nth-child(3){
+	background-color: rgba(36,44,106,0.7);
+}
+.blog_parent>div>div:nth-child(4){
+	background-color: rgba(255,255,255,0.7);
+}
+.blog_parent>div>div:nth-child(5){
+	background-color: rgba(237,108,112,0.7);
+}
+.blog_parent>div>div:nth-child(6){
+	background-color: rgba(255,255,255,0.7);
+}
+
+@media only screen and (max-width: 600px) {
+	.blog h3 {
+		font-size: 2.2em;
+	}
+	.blog p {
+		font-size: 1.5em;
+	}
+	.blog_big_button_link{
+		font-size: 1.3em;
+	}
+	.btn_container {
+		margin-bottom: 1em;
+	}
+}

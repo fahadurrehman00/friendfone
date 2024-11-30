@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+		 <meta charset="utf-8">
+    	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Friend Fone</title>
+	<link rel="icon" type="image/svg" href="https://res.cloudinary.com/dsil3yabp/image/upload/v1595640014/favicon_qgcraf.svg">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+    </head>
+    <body>
+<div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+</div>
+
+    <div id="landing-header">
+		<img class="logo" src="https://res.cloudinary.com/dsil3yabp/image/upload/v1595640014/logo_iznnhy.svg" alt="all"/>
+        <h1>Welcome to Friend Fone!</h1>
+        <p class="lead">
+			<a href="home" class="btn btn-success btn-lg">Learn More</a>
+			<a href="register" class="btn btn-primary btn-lg">Signup</a>
+			<a href="login" class="btn btn-primary btn-lg">Login</a>
+
+		</p>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    
+</body>
+</html>

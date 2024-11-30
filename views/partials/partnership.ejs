@@ -1,0 +1,38 @@
+<div class="modal fade" id="partnershipFormModal" tabindex="-1" aria-labelledby="partnershipFormModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <div style="text-align:center;" class="form_container">
+            <form action="/support" method="POST">
+              <input type="text" name="name"  placeholder="Your Full Name" required>
+              <br>
+              <input type="text" name="phoneForLearnMore" placeholder="Your Phone Number" required>
+              <br>
+              <input type="text" name="emailForLearnMore" placeholder="Your Email" required>
+              <br>
+              <input type="text" name="organization" placeholder="Your Organization Name" required>
+              <br>
+              <input type="text" name="website" placeholder="Your Website Name">
+              <br>
+              <input type="text" name="page_name" value="Partnership Section from <%= pathname %> page" style="display:none" >
+              <button class="btn btn-success form_big_button_link" type="submit">
+                Send
+              </button>     
+            </form>
+        	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="partnership">
+		<h1 class="big_header">Want To See Your Community, Hospital, Or School Use FriendFone?</h1>
+		<p>
+			If you’re interested in us working with your community, hospital, or school, fill out the form below and 
+			we can get the ball rolling on forming a partnership! Partnerships provide discounted access for
+			individuals looking to use FriendFone, along with additional features and perks.
+		</p>
+		<a role="button" data-bs-toggle="modal" data-bs-target="#partnershipFormModal" class="btn btn-success big_button_link">Explore Partnerships</a>
+</section>

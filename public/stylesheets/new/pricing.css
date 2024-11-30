@@ -1,0 +1,82 @@
+/*change the main section bg for price page*/
+
+.main_view {
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/Pricing2-min_rbis7y_ebwy7z.png');
+}
+
+#pricing li {
+	font-weight: bold;
+}
+#pricing h3 {
+	color: #000000;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin: 0;
+}
+
+.starting_headline {
+	margin-bottom: .1em;
+}
+
+.pricing_big_button_link{
+	background-color: #28AE60;
+	color: #FFFFFF;
+	padding: 0.7em 1.5em;
+	border: none;
+	border-radius: 1.5em;
+	font-size: .8em;
+	text-align: center;
+}
+
+.prices {
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/a176716205951f374b88a00d77d89a3e_1_jcunu3.png') center no-repeat;
+	background-size: cover;
+}
+.price_parent>div>div{
+	padding: 1em 0;
+}
+.price_parent>div>div:nth-child(1){
+	background-color: rgba(255,145,0,0.7);
+}
+.price_parent>div>div:nth-child(2){
+	background-color: rgba(255,255,255,0.7);
+}
+.price_parent>div>div:nth-child(3){
+	background-color: rgba(36,44,106,0.7);
+}
+.price_parent>div>div:nth-child(4){
+	background-color: rgba(255,255,255,0.7);
+}
+.price_parent>div>div:nth-child(5){
+	background-color: rgba(237,108,112,0.7);
+}
+.price_parent>div>div:nth-child(6){
+	background-color: rgba(255,255,255,0.7);
+}
+.price_parent>div>div:nth-child(7){
+	background-color: rgba(135,201,100,0.7);
+}
+.price_parent>div>div:nth-child(8){
+	background-color: rgba(255,255,255,0.7);
+}
+.price_parent>div>div:nth-child(9){
+	background-color: rgba(202,89,167,0.7);
+}
+.price_parent>div>div:nth-child(10){
+	background-color: rgba(255,145,0,0.7);
+}
+
+@media only screen and (max-width: 600px) { 
+	#pricing h3 {
+		font-size: 2em;
+	}
+	#pricing li {
+		font-size: 1.6em;
+	}
+	.starting_headline{
+		margin-bottom: .5em;
+	}
+	.pricing_big_button_link{
+		font-size: 1.2em
+	}
+}

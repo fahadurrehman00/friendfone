@@ -1,0 +1,618 @@
+<%- include ("./partials/header") %>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<style>
+		.apply {
+			margin-top: -35px !important;
+			position: relative;
+			float: left;
+			margin-left: 67%;
+			font-size: 20px;
+		}
+
+		#promolabel {
+			font-size: 15px;
+			color: white;
+		}
+
+		.dollar-sign {
+			position: absolute;
+			z-index: 1;
+			margin-top: 1.2%;
+			float: left;
+			color: white;
+		}
+
+		.amount {
+			background: transparent !important;
+		}
+
+		.amount>input {
+			border: none;
+		}
+
+		.per-month {
+			position: absolute;
+			z-index: 1;
+			margin-top: 1.1%;
+			margin-left: 10%;
+			float: left;
+			color: white;
+		}
+
+		#taxlabel {
+			margin-bottom: 0;
+			margin-top: 5px;
+			color: white;
+		}
+	</style>
+	<link rel="stylesheet" href="/stylesheets/registeration.css">
+
+	<div class="user">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-signin" action="/register" method="POST" enctype="multipart/form-data"
+						id="regForm">
+
+
+				</div>
+			</div>
+
+
+			<!--Email, Password and Phone Number-->
+			<div class="tab frame">
+				<h3 class="register mt-3">Create A New Account<h3>
+						<hr>
+						<div class="row mt-4 justify-content-md-center">
+							<div class="col-md-6">
+								<label class="sr-only" for="firstName"></label>
+								<input type="text" class="form-control required" placeholder="First Name"
+									name="firstName" id="firstName" required><br>
+								<label class="sr-only" for="lastName"></label>
+								<input type="text" class="form-control required" placeholder="Last Name" name="lastName"
+									id="lastName" required><br>
+								<label for="inputEmail" class="sr-only">Email</label>
+								<input type="email" id="inputEmail" class="form-control required"
+									placeholder="Email Address" name="email" required><br>
+								<label for="inputPassword" class="sr-only">Password</label>
+								<input type="password" id="inputPassword" class="form-control required"
+									placeholder="Password" name="password" minlength="6" required><br>
+								<label class="sr-only" for="phoneNumber">Phone Number</label>
+								<input type="tel" id="phoneNumber" class="form-control us-phonenumber-mask required"
+									placeholder="Phone" name="phoneNumber" required><br>
+
+								<label class="sr-only" for="schoolPhone">School Phone Number</label>
+								<input type="tel" id="schoolPhone" class="form-control us-phonenumber-mask" placeholder="School's Phone"
+									name="schoolPhone"><br>
+
+
+
+								<div class="form-control signin-timeZone required">
+									<label for="selectPurpose">Purpose of Registration</label>
+									<select id="selectPurpose" class="form-control required" name="purpose" required>
+										<option selected disabled>Select the Purpose</option>
+										<option>Personal</option>
+										<option>Business</option>
+										<option>Medical</option>
+										<option>Educational</option>
+										<option>Other</option>
+									</select>
+								</div><br>
+
+
+
+								<!--Time Zone-->
+								<div class="required form-control signin-timeZone">
+									<label for="selectTimeZone">Time Zone</label>
+									<select id="selectTimeZone" class="form-control required" name="timeZone" required>
+										<option selected disabled>Select the Time Zone</option>
+										<option value="<%= timeZones[579] %>">
+											<%= timeZones[579] %>
+										</option>
+										<option value="<%= timeZones[581] %>">
+											<%= timeZones[581] %>
+										</option>
+										<option value="<%= timeZones[585] %>">
+											<%= timeZones[585] %>
+										</option>
+										<option value="<%= timeZones[586] %>">
+											<%= timeZones[586] %>
+										</option>
+									</select>
+
+								</div>
+								<br>
+							</div>
+
+							<!-- User Pin, Street Address, City, State, -->
+
+							<div class="col-md-6">
+								<label class="sr-only" for="pin"></label>
+								<input type="text" class="form-control required" placeholder="Pin" name="pin" id="pin" maxlength="4" required><br>
+								<label class="sr-only" for="streetAdress"></label>
+								<input type="text" class="form-control required" placeholder="Street Address"
+									name="streetAddress" id="streetAddress" required><br>
+
+								<label class="sr-only" for="secondAddress"></label>
+								<input type="text" class="form-control" placeholder="Street Address 2"
+									name="secondAddress" id="secondAddress"><br>
+								<label class="sr-only" for="city"></label>
+								<input type="text" class="form-control required" placeholder="City" name="city"
+									id="city" required><br>
+
+								<label class="sr-only" for="state"></label>
+								<input type="text" class="form-control required" placeholder="State" name="state"
+									id="state" required><br>
+
+								<label class="sr-only" for="zipCode"></label>
+								<input type="number" class="form-control mb-3 required" placeholder="Zip Code"
+									name="zipCode" id="zipCode" required><br>
+
+								<label class="sr-only" for="friendPhone">Friend Phone Number</label>
+								<input type="tel" id="friendPhone" class="form-control us-phonenumber-mask" placeholder="Friend's Phone"
+									name="friendPhone"><br>
+
+								<!-- promo apply -->
+								<label class="sr-only" for="promoCode"></label>
+								<input type="text" id="promoCode" class="form-control" placeholder="Promo Code"
+									name="promoCode" style="width: 65%">
+								<button class="register apply" id="apply" type="button">Apply</button>
+								<p id="promolabel"></p>
+
+
+								<!--Profile Picture -->
+
+								<div class="form-control pt-4 pb-4 image required mt-4">
+									<label for="image">Profile Picture</label>
+									<input type="file" accept="image/*, .heic, .heif" name="image" id="image"
+										onchange="ValidateSize(this)" style="width: 230px" src="download.png">
+								</div>
+							</div>
+
+						</div>
+			</div>
+
+
+			<!--EC1 First Name, Last Name, Email ID, Phone Number, Relation, EC1 Street Address, City, State and Zip Code -->
+			<div class="tab frame">
+
+				<h3 class="register mt-3">Emergency Contact 1</h3>
+				<hr>
+				<div class="row mt-4 mb-2 pb-4 justify-content-md-center">
+					<div class="col-md-6">
+						<label class="sr-only" for="firstName"></label>
+						<input type="text" class="form-control required" placeholder="First Name" name="ec1firstName"
+							id="ec1firstName" required><br>
+						<label class="sr-only" for="lastName"></label>
+						<input type="text" class="form-control required" placeholder="Last Name" name="ec1lastName"
+							id="ec1lastName" required><br>
+						<label for="ec1inputEmail" class="sr-only">Email</label>
+						<input type="email" id="ec1inputEmail" class="form-control required" placeholder="Email Address"
+							name="ec1email" required><br>
+						<label class="sr-only" for="ec1phoneNumber">Phone Number</label>
+						<input type="tel" id="ec1phoneNumber" class="form-control us-phonenumber-mask required"
+							placeholder="Phone" name="ec1phoneNumber" required><br>
+						<label class="sr-only" for="ec1Relation"></label>
+						<input type="text" class="form-control required" placeholder="Relation" name="ec1Relation"
+							id="ec1Relation" required><br>
+					</div>
+
+
+					<div class="col-md-6">
+						<label class="sr-only" for="ec1streetAdress"></label>
+						<input type="text" class="form-control required" placeholder="Street Address"
+							name="ec1streetAdress" id="ec1streetAdress" required><br>
+						<label class="sr-only" for="ec1secondary"></label>
+						<input type="text" class="form-control" placeholder="Secondary" name="ec1secondary"
+							id="ec1secondary"><br>
+						<label class="sr-only" for="ec1city"></label>
+						<input type="text" class="form-control required" placeholder="City" name="ec1city" id="ec1city"
+							required><br>
+						<label class="sr-only" for="ec1state"></label>
+						<input type="text" class="form-control required" placeholder="State" name="ec1state"
+							id="ec1state" required><br>
+						<label class="sr-only" for="ec1zipCode"></label>
+						<input type="number" class="form-control required" placeholder="Zip Code" name="ec1zipCode"
+							id="ec1zipCode" required><br>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!--------EC 2--------->
+
+			<div class="tab frame">
+				<h3 class="register mt-3">Emergency Contact 2</h3>
+				<hr>
+				<div class="row mt-4 mb-2 pb-4 justify-content-md-center">
+					<div class="col-md-6">
+						<label class="sr-only" for="firstName"></label>
+						<input type="text" class="form-control required" placeholder="First Name" name="ec2firstName"
+							id="firstName" required><br>
+						<label class="sr-only" for="lastName"></label>
+						<input type="text" class="form-control required" placeholder="Last Name" name="ec2lastName"
+							id="lastName" required><br>
+						<label for="ec2inputEmail" class="sr-only">Email</label>
+						<input type="email" id="ec2inputEmail" class="form-control required" placeholder="Email Address"
+							name="ec2email" required><br>
+						<label class="sr-only" for="ec2phoneNumber">Phone Number</label>
+						<input type="tel" id="ec2phoneNumber" class="form-control us-phonenumber-mask required"
+							placeholder="Phone" name="ec2phoneNumber" required><br>
+						<label class="sr-only" for="ec2Relation"></label>
+						<input type="text" class="form-control required" placeholder="Relation" name="ec2Relation"
+							id="ec2Relation" required><br>
+					</div>
+
+					<div class="col-md-6">
+						<label class="sr-only" for="ec2streetAdress"></label>
+						<input type="text" class="form-control required" placeholder="Street Address"
+							name="ec2streetAdress" id="ec2streetAdress" required><br>
+						<label class="sr-only" for="ec2secondary"></label>
+						<input type="text" class="form-control" placeholder="Secondary" name="ec2secondary"
+							id="ec2secondary"><br>
+						<label class="sr-only" for="ec2city"></label>
+						<input type="text" class="form-control required" placeholder="City" name="ec2city" id="ec2city"
+							required><br>
+						<label class="sr-only" for="ec2state"></label>
+						<input type="text" class="form-control required" placeholder="State" name="ec2state"
+							id="ec2state" required><br>
+						<label class="sr-only" for="ec2zipCode"></label>
+						<input type="number" class="form-control required" placeholder="Zip Code" name="ec2zipCode"
+							id="ec2zipCode" required><br>
+					</div>
+				</div>
+			</div>
+
+			<!---------------- Billing Detail ------------>
+			<div class="tab frame">
+
+				<h3 class="register mt-3">Billing Info</h3>
+				<hr>
+				<div class="row mt-4 mb-2 pb-4 justify-content-md-center">
+					<div class="col-md-6">
+						<label class="sr-only" for="billfirstName">First Name</label>
+						<input type="text" class="form-control required" placeholder="First Name" name="billfirstName"
+							id="billfirstName" required><br>
+						<label class="sr-only" for="billlastName">Last name</label>
+						<input type="text" class="form-control required" placeholder="Last Name" name="billlastName"
+							id="billlastName" required><br>
+						<label for="cc" class="sr-only">CC</label>
+						<input type="text" id="cc" class="form-control required" placeholder="Credit Card Number"
+							name="cc" required><br>
+
+						<label class="sr-only" for="cvv">CVV</label>
+						<input type="text" id="cvv" class="form-control required" placeholder="CVV" name="cvv"
+							required><br>
+
+						<label class="sr-only" for="expire">Expiration</label>
+						<input type="text" class="form-control required" placeholder="Expiration date (mm/yy)"
+							name="expire" id="expire" required><br>
+
+					</div>
+
+
+					<div class="col-md-6">
+						<label class="sr-only" for="billstreetAddress"></label>
+						<input type="text" class="form-control required" placeholder="Street Address"
+							name="billstreetAddress" id="billstreetAddress" required><br>
+						<label class="sr-only" for="billsecondary"></label>
+						<input type="text" class="form-control" placeholder="Secondary" name="billsecondary"
+							id="billsecondary"><br>
+						<label class="sr-only" for="billcity"></label>
+						<input type="text" class="form-control required" placeholder="City" name="billcity"
+							id="billcity" required><br>
+						<label class="sr-only" for="billstate"></label>
+						<input type="text" class="form-control required" placeholder="State" name="billstate"
+							id="billstate" required><br>
+						<label class="sr-only" for="billzipCode"></label>
+						<input type="number" class="form-control required" placeholder="Zip Code" name="billzipCode"
+							id="billzipCode" required><br>
+					</div>
+
+					<div class="form-control required col-md-11 amount">
+						<label class="sr-only" for="expire">Amount</label>
+						<span class="dollar-sign">$</span>
+						<span class="per-month">+ $<%= (5 * 0.0625).toFixed(2) %> tax /month</span>
+						<input type="text" class="form-control required col-md-11" value="5.00" readonly name="amount"
+							id="amount" required>
+					</div>
+
+					<div class=" col-md-11 amount">
+						<p id="taxlabel"></p>
+					</div>
+
+
+					<br>
+
+					<div class="required col-md-11 mt-4"
+						style="color: white; border: 2px solid white; border-radius: 7px" required>
+
+						<input type="checkbox" id="agree" name="agree" class="required" required>
+						By checking this box or clicking signup, you agree to the
+						<a class="termsCondition"
+							href="https://docs.google.com/document/d/1Jz3dMG1WOolR9_Udlzv45Od69NCmTlANYiK-RXfZ6BU/edit"
+							target="_blank">End User License Agreement</a>.
+					</div>
+				</div>
+			</div>
+			<div class="waiting-msg mb-5">
+				<h2 id="myP"></h2>
+			</div>
+
+
+
+
+			<!--Submit Form Here-->
+
+			<button class="register2 col-md-6 btn btn-lg btn-block mx-auto mt-1" type="button" id="prevBtn"
+				onclick="nextPrev(-1)">Previous</button>
+			<button class=" col-md-6 btn btn-lg btn-block mx-auto" id="nextBtn" type="button"
+				onclick="nextPrev(1)">Next</button>
+
+			<!-- (c) 2005, 2021. Authorize.Net is a registered trademark of CyberSource Corporation -->
+			<div class="AuthorizeNetSeal mx-auto mt-3 d-none">
+				<script type="text/javascript" language="javascript">
+					var ANS_customer_id="b63c70a6-9b36-4fcf-b213-8265e943e9a9";
+				</script>
+				<script type="text/javascript" language="javascript" src="https://verify.authorize.net/anetseal/seal.js" ></script>
+			</div>
+					
+			<!-- Circles which indicates the steps of the form: -->
+			<div>
+				<span class="step"></span>
+				<span class="step"></span>
+				<span class="step"></span>
+				<span class="step"></span>
+			</div>
+
+
+			</form>
+		</div>
+	</div>
+
+
+	<script>
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+
+		function showTab(n) {
+			// This function will display the specified tab of the form...
+			var x = document.getElementsByClassName("tab");
+			x[n].style.display = "block";
+			//... and fix the Previous/Next buttons:
+			if (n == 0) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "block";
+			}
+
+			const authorizeSeal = document.querySelector(".AuthorizeNetSeal");
+
+			if (n == (x.length - 1)) {
+				authorizeSeal.classList.remove( 'd-none' );
+				document.getElementById("nextBtn").innerHTML = "Sign Up";
+			} else {
+				authorizeSeal.classList.add( 'd-none' );
+				document.getElementById("nextBtn").innerHTML = "Next";
+			}
+			//... and run a function that will display the correct step indicator:
+			fixStepIndicator(n)
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form...
+			if (currentTab >= x.length) {
+
+				console.log($("#agree").prop("checked"));
+				// check is agree is checked
+				if ($('#agree').prop("checked")) {
+					// ... the form gets submitted:
+					document.getElementById("myP").innerHTML = "Please Wait..";
+
+					var cc = $('#cc').val();
+					var cvv = $('#cvv').val();
+					var expire = $('#expire').val();
+
+					$.post(
+						"/verifycard",
+						{
+							cc: cc,
+							cvv: cvv,
+							expire: expire,
+							amount: 1
+						},
+						function (data, status) {
+							if (status !== 'success') {
+								x[currentTab - n].style.display = "block";
+								document.getElementById("myP").innerHTML = "";
+								currentTab = currentTab - 1;
+								Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'Something went wrong! Please try again.'
+								});
+								event.preventDefault();
+							} else {
+								if (data.response === 'failed') {
+									x[currentTab - n].style.display = "block";
+									document.getElementById("myP").innerHTML = "";
+									currentTab = currentTab - 1;
+									Swal.fire({
+										icon: 'error',
+										title: 'Oops...',
+										text: data.errors
+									});
+									event.preventDefault();
+								} else {
+									$("#regForm").submit();
+								}
+							}
+						}
+					);
+				} else {
+					event.preventDefault();
+					x[currentTab - n].style.display = "block";
+					currentTab = currentTab - 1;
+					Swal.fire({
+						icon: 'error',
+						title: 'Unchecked the Terms & Condtions',
+						text: 'Please agree to the terms & conditions!'
+					});
+				}
+
+
+				return false;
+			}
+			// Otherwise, display the correct tab:
+			showTab(currentTab);
+		}
+
+		function validateForm() {
+			// This function deals with validation of the form fields
+			var x, y, i, a, valid = true;
+			x = document.getElementsByClassName("tab");
+			y = x[currentTab].getElementsByClassName("required");
+			// timeZones, purpose, image validation
+			if ($('#selectPurpose').val() == null) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Purpose not selected',
+					text: 'Please select Purpose of registration!'
+				});
+				valid = false;
+			}
+			else if ($('#selectTimeZone').val() == null) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Time Zone is missing',
+					text: 'Please select Time Zone!'
+				});
+				valid = false;
+			}
+			// else if ($('#image').get(0).files.length == 0) { 
+			// 	Swal.fire({
+			// 		icon: 'error',
+			// 		title: 'image not uploaded',
+			// 		text: 'Please upload the Profile Picture!'
+			// 	});
+			// valid = false; }
+			else if ($('#inputPassword').val().trim().length < 6) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Password Error',
+					text: 'Password should contain at least 6 characters.'
+				});
+				valid = false;
+			}
+
+
+
+			// A loop that checks every input field in the current tab:
+			for (i = 0; i < y.length; i++) {
+				// If a field is empty...
+				if (y[i].value == "") {
+					// add an "invalid" class to the field:
+
+					Swal.fire({
+						icon: 'error',
+						title: 'Missing information',
+						text: 'Please complete the missing field!'
+					});
+					y[i].classList.add("invalid");
+					// and set the current valid status to false
+					valid = false;
+				}
+
+			}
+
+			// If the valid status is true, mark the step as finished and valid:
+			if (valid) {
+				document.getElementsByClassName("step")[currentTab].className += " finish";
+			}
+			return valid; // return the valid status
+		}
+
+		function fixStepIndicator(n) {
+			// This function removes the "active" class of all steps...
+			var i, x = document.getElementsByClassName("step");
+			for (i = 0; i < x.length; i++) {
+				x[i].className = x[i].className.replace(" active", "");
+			}
+			//... and adds the "active" class on the current step:
+			x[n].className += " active";
+		}
+
+		//promocode
+		$("#apply").click(function () {
+			$.post("/codes/apply",
+				{
+					code: $("#promoCode").val(),
+				},
+				function (data, status) {
+					if (status == 'success') {
+						if (data.amount == 0) {
+							let amount = 5.00;
+							$("#amount").val(amount);
+							// $("#amount").val(parseFloat(amount).toFixed(2));
+							$("#promolabel").text('Invalid promo code');
+							$('.per-month').text('+ $' + (amount * 0.0625).toFixed(2) + ' tax /month');
+						} else {
+							$("#amount").attr('value', parseFloat(data.amount).toFixed(2));
+							$('.per-month').text('+ $' + data.tax.toFixed(2) + ' tax /month');
+							$("#promolabel").text('Promo code applied successfully');
+						}
+					} else {
+						$("#promolabel").val('failed to apply promo');
+					}
+				});
+		});
+
+	</script>
+
+	<!-- expiry date of cc -->
+	<script>
+		$('#expire').on('input', function () {
+			var curLength = $(this).val().length;
+			if (curLength === 2) {
+				var newInput = $(this).val();
+				newInput += '/';
+				$(this).val(newInput);
+			}
+		});
+		// image size validation
+		function ValidateSize(file) {
+			var FileSize = file.files[0].size / 1024 / 1024; // in MiB
+			const max = 6;
+
+			if (FileSize > max) {
+				Swal.fire({
+					icon: 'error',
+					title: 'image size is too big',
+					text: `Image size cannot be more than less ${max}Mb!`
+				});
+				$(file).val(''); //for clearing with Jquery
+			} else {
+
+			}
+		}
+
+		document.querySelector('#pin').addEventListener( 'input', e => e.target.value = e.target.value.replace(/\D/g, '') );
+	</script>
+	<!--latest jquery just for hamburger menu of navbar in mobile view --->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+		crossorigin="anonymous"></script>
+
+	<%- include ("./partials/newFooter") %>

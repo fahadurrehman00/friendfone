@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 20px;
+}
+
+p{
+	font-family: 'Lora', serif;
+	color: #3C3C3C;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+}
+
+h1{
+	color:#3C3C3C;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h1.big_header {	
+	color: #3C3C3C;
+	font-size: 2em;
+	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+li {
+	font-family: 'Lora', serif;
+	color: #3C3C3C;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+a{
+	color: #3C3C3C;
+	font-family: 'Lora', serif;
+	text-decoration: none;
+}
+
+.big_button_link{
+	color: #FFFFFF;
+	background-color: #28AE60;
+	padding: 0.7em 1.5em;
+	border: none;
+	border-radius: 1.5em;
+	font-size: 1em;
+	/*font-weight: bold;*/
+	text-align: center;
+
+}
+
+i{
+	font-size: 1.2em;
+	color: #1e761e;
+}
+
+i:hover {
+	color: #28AE60;
+}
+
+.mynav ul>li{
+	display: inline-block;
+	margin-right: 1em;
+	font-size: 1.2em;
+}
+
+.mynav ul>li a:hover{
+	color: green;
+}
+
+.for_mobile {
+	display: none;
+}
+
+.mynav{
+	width: 100%;
+	background: rgba(196, 196, 196, 0.7);
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	margin-top: 1em;
+	margin-left: 1em;
+}
+
+.social_list{
+	margin-top: 1em;
+	float: right;
+	clear: both;
+}
+
+.social_list #social_media_sources a {
+	margin-right: .4em;
+}
+
+.social_list a img {
+	width: 30px;
+	height: 30px;
+}
+
+#social_media_sources a:hover {
+	text-decoration: none;
+}
+
+.nav_list{
+	clear: both;
+}
+
+* li>a {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+* li>a:hover{
+	color: green;
+	text-decoration: underline;
+}
+
+.main_view{
+	width: 100%;
+	height: 600px;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+.two_buttons a{
+	margin-right: .5em;
+}
+
+.two_buttons{
+	width: 70%;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.two_buttons .main_header_one {
+	font-size: 3.5em;
+	color: #ffffff;
+}
+
+.two_buttons .main_header_two {
+	font-size: 2em;
+	color: #ffffff;
+	margin-bottom: .5em;
+}
+
+#videoBG {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		font-size: 10px;
+	}
+	p {
+		font-size: 1.5em;
+	}
+	li {
+		font-size: 16px;
+	}
+
+	a{
+		color: #3C3C3C;
+		text-decoration: none;
+	}
+
+	.big_button_link {
+		font-size: 1.3em;
+	}
+
+	.for_mobile {
+		display: block;
+	}
+
+	.mynav ul>li{
+		display: block;
+		margin-right: 0;
+		border-top: 1px solid green;
+		padding: .6em 0;
+		padding-left: 1em;
+		font-size: 1.5em;
+	}
+
+	.mynav ul>li a:hover{
+		color: green;
+	}
+
+	.for_mobile {
+		display: block;
+	}
+
+	.mynav{
+		width: 100%;
+		background: rgba(196, 196, 196, 1);
+		display: block;
+	}
+
+	.brand_logo{
+		height: 80px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+	}
+	.nav_lists{
+		position: absolute;
+		width: 100%;
+		max-height: 0;
+		background: rgba(196, 196, 196, 1);
+		z-index: 10000;
+		overflow: hidden;
+		transition: max-height 1s ease;
+	}
+
+	.extend {
+		max-height: 400px;
+	}
+
+	.mobile_social_list a:hover {
+		text-decoration: none;
+	}
+	.mobile_social_list a i {
+		font-size: 2.5em;
+		padding-right: .3em;
+	}
+
+	#ham i {
+		font-size: 2.5em;
+		padding-right: .7em;
+	}
+
+	.logo {
+		margin-top: 0;
+		margin-left: 0;
+	}
+
+	.logo a img {
+		width: 80px;
+		height: 60px;
+		padding-left: .7em;
+		object-fit: contain;
+	}
+
+	.social_list{
+		margin-top: 0;
+		float: none;
+	}
+
+	.social_list a {
+		margin-right: 0;
+	}
+
+	#social_media_sources  {
+		display:none;
+	}
+
+	.social_list{
+		padding: 0;
+		margin-bottom: 0;
+	}
+
+	.nav_list{
+		padding: 0;
+		clear: both;
+	}
+
+	.main_view {
+		height: 350px;
+		background-size: 100% 100%;
+	}
+
+	.two_buttons{
+		top: 60%;
+	}
+
+	.two_buttons a {
+		margin-top: 1em;
+	}
+	#videoBG {
+		object-fit: unset;
+	}
+	/*making forms responsive */
+	form {
+		font-size: 15px;
+	}
+	form input {
+		width: 90%;
+	}
+}
+
+
+@media only screen and (man-width: 768px) { 
+	.main_view {
+		height: 500px;
+	}
+
+	#videoBG {
+		object-fit: unset;
+	}
+
+	form input {
+		width: 80%;
+	}
+}
+
+@media only screen and (min-width: 1300px) { 
+	.main_view {
+		height: 700px;
+	}
+}

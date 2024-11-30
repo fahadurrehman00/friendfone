@@ -1,0 +1,52 @@
+/*change the main view header of concierge url*/
+.main_view {
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/Concierge2_j2brep.png');
+}
+
+section.about_section:nth-child(3) .about_part_one {
+	order: 2;
+}
+
+section.about_section:nth-child(3) .about_part_one .skew_elem {
+	transform: skew(-30deg);
+	right: 15%; 
+	left: auto;
+}
+
+
+
+section.about_section:nth-child(3) .about_part_two {
+	order: 1;
+}
+
+section.about_section:nth-child(3) .about_part_two .second_child { 
+	background-color: rgba(0, 117, 255, 0.4);
+}
+
+section.about_section:nth-child(3) .second_child>div {
+	margin-right: 0;
+	margin-left: -25px; 
+} 
+
+section.about_section:nth-child(4) .about_part_two .second_child {
+	background-color: rgba(255, 0, 31, 0.4);
+}
+
+#footer {
+	margin-top: 0;
+}
+
+@media only screen and (max-width: 600px) {
+	section.about_section:nth-child(3) .about_part_one {
+		order: 1;
+	}
+
+	section.about_section:nth-child(3) .about_part_two {
+		order: 2;
+	}
+
+	section.about_section:nth-child(3) .second_child>div {
+		margin-left: 0;
+		margin-right: -25px; 
+	}
+}

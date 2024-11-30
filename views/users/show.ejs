@@ -1,0 +1,433 @@
+<% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){%>	
+
+	<%- include ("../partials/header") %>
+	<% if(currentUser && currentUser.isAdmin){%>
+	
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<h3 class="h3 black-headings">Welcome back, <%= user.firstName %>!</h3>
+				<div class="d-flex justify-content-center">
+	
+					<a class="btn btn-light admin-hover" href="/admin">Go to Admin Page</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row mx-5 my-3">
+		<div class="col notification">
+			<div class="btn-group">
+				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<% if (unverified !== null && unverified.length != 0) { %>
+					<span class="badge badge"><%= unverified.length %></span>
+					<% } %>
+					<i class="fa fa-bell"></i>
+				  </button>
+				<div class="dropdown-menu">
+				<% if (unverified !== null && unverified.length != 0) { %>
+					<% unverified.forEach(function(uv) { %>
+					<a class="dropdown-item" target="_blank" 
+					   href="<%= process.env.WEB_LINK + '/appointments/verify-pin/?token=' + uv.appointmentId.pinToken %>">
+						You missed your ATN at 
+						<%= moment( uv.timestamp, 'YYYY/MMM/DD').tz('US/Eastern').format('MMM DD YYYY HH:mm z'); %> Verify now!
+					</a>
+				<div>
+			
+					</div>   
+				<% }); } else { %>
+					<a class="dropdown-item" href="#">N/A</a>
+				<% } %>
+				</div>
+			</div>
+		</div>
+	
+		<% if ( ! user._id.equals(currentUser._id) ) { %>
+		<div class="col ban-or-unban-user text-right">
+			<% if ( typeof user.banned !== 'undefined' && user.banned ) { %>
+			<button class="btn btn-info unban"><i class="fa fa-unlock-alt mr-1"></i> Unban User</button>
+			<% } else { %>
+			<button class="btn btn-danger ban"><i class="fa fa-ban mr-1"></i> Ban User</button>
+			<% } %>
+		</div>
+		<% } %>
+		
+	</div>
+	
+	<% } %>
+	<!-- User Profile info -->
+	<div class="container">
+		<div class="row">
+			<% if(user.timeZone != null){ %>
+			<div class="col-lg-4 mb-4">
+			<% } else { %>
+			<div class="col-lg-6 mb-4">
+			<% } %>
+			   <div class="card mb-4 p-3">
+					<a class="text-center" href="<%= user.image %>">
+						<img class="bd-placeholder-img rounded-circle" width="169px" height="175px" 
+							 src="<%= user.image %>" alt="Profile image" />
+					</a>
+			
+					<div class="card-body text-center">
+						<h2 class="text-capitalize"><%= user.isHospitality ? user.firstName : user.firstName + " " + user.lastName %>
+							<br>
+							<% if ( ! user.isHospitality ) { %>
+							<a class="text-capitalize btn btn-sm btn-success" href="/users/<%= user._id %>/edit">Edit Profile</a>
+							<% } %>
+						</h2>
+						<% if ( user.isHospitality ) { %>
+							<p><span class="font-weight-bold">Email Address: </span> <%= user.email %></p>
+							<p><span class="font-weight-bold">Phone Number: </span> <%= user.username %></p>
+							<p><span class="font-weight-bold">Direct Line: </span> <%= user.directLine %></p>
+							<p><span class="font-weight-bold">Point of Contact: </span> <%= user.pointOfContact %></p>
+							<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Company Address: </span> <%= user.streetAddress %></p>
+
+							<% if(currentUser && currentUser.isAdmin && user.banned ) { %>
+								<p class="text-danger"><span class="font-weight-bold">Account Banned: </span> <%= user.banReason %></p>
+							<% } %>
+						<% } else { %>
+							<% if(currentUser && currentUser.isAdmin) {%>
+								<p><span class="font-weight-bold">Promo Code: </span> <%= user.promoCode %></p>
+								<p><span class="font-weight-bold">Purpose: </span> <%= user.purpose %></p>
+								<% } %>
+								<p><span class="font-weight-bold">Email Address: </span> <%= user.email %></p>
+								<p><span class="font-weight-bold">Phone Number: </span> <%= user.username %></p>
+								<p><span class="font-weight-bold">PIN: </span> <%= user.pin %></p>
+								<p><span class="text-capitalize font-weight-bold">Time Zone: </span> <%= user.timeZone %></p>
+								<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Street Address: </span> <%= user.streetAddress %></p>
+								<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Street Address 2: </span> <%= user.secondAddress %></p>
+								<p class="text-capitalize"><span class="text-capitalize font-weight-bold">City: </span> <%= user.city %></p>
+								<p class="text-capitalize"><span class="text-capitalize font-weight-bold">State: </span> <%= user.state %></p>
+								<p><span class="font-weight-bold">Zip Code: </span> <%= user.zipCode %></p>
+								
+								<p><span class="font-weight-bold">Friend Phone: </span> <%= user.friendPhone %></p>
+								
+								<p><span class="font-weight-bold">School Phone: </span> <%= user.schoolPhone %></p>
+								<% if(currentUser && currentUser.isAdmin && user.banned ) { %>
+									<p class="text-danger"><span class="font-weight-bold">Account Banned: </span> <%= user.banReason %></p>
+								<% } %>
+						<% } %>
+					
+					</div>	
+				</div>
+			</div>
+
+			<% if ( ! user.isHospitality ) { %>
+				<!----- New Card for EC1 and EC2------>
+				<% if(user.timeZone != null){ %>
+				<div class="col-lg-4 mb-4 card">
+				<% } else { %>
+				<div class="col-lg-6 mb-4 card">
+				<% } %>
+					<div class="">
+						<h3 class="card-title pt-3 pb-0">Emergency Contacts</h3><hr>
+						<div>
+							<!-- EC1 -->
+							<div class="card first-card">
+								<button class="btn btn-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									<div class="header-card" id="headingOne">Emergency Contact #1 <i class="fa fa-caret-down float-right fa-2x"></i></div>
+								</button>
+								<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+									<div class="card-body">
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">First Name: </span> <%= user.ec1firstName %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Last Name: </span> <%= user.ec1lastName %></p>
+										<p><span class="font-weight-bold">Email: </span> <%= user.ec1email %></p>
+										<p><span class="font-weight-bold">Phone Number: </span> <%= user.ec1phoneNumber %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Relation: </span> <%= user.ec1Relation %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Street Address: </span> <%= user.ec1streetAdress %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Secondary Address: </span> <%= user.ec1secondary %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">City: </span> <%= user.ec1city %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">State: </span> <%= user.ec1state %></p>
+										<p><span class="font-weight-bold">Zip Code: </span> <%= user.ec1zipCode %></p>
+									</div>
+								</div>
+							</div>
+							<!-- EC2 -->
+							<div class="card second-card">
+								<button class="btn btn-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									<div class="header-card" id="headingTwo">Emergency Contact #2 <i class="fa fa-caret-down float-right fa-2x"></i></div>
+								</button>
+		
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+									<div class="card-body">
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">First Name: </span> <%= user.ec2firstName %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Last Name: </span> <%= user.ec2lastName %></p>
+										<p><span class="font-weight-bold">Email: </span> <%= user.ec2email %></p>
+										<p><span class="font-weight-bold">Phone Number: </span> <%= user.ec2phoneNumber %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Relation: </span> <%= user.ec2Relation %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Street Address: </span> <%= user.ec2streetAdress %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">Secondary Address: </span> <%= user.ec2secondary %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">City: </span> <%= user.ec2city %></p>
+										<p class="text-capitalize"><span class="text-capitalize font-weight-bold">State: </span> <%= user.ec2state %></p>
+										<p><span class="font-weight-bold">Zip Code: </span> <%= user.ec2zipCode %></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+		
+					<div class="mt-5 mb-4 border"></div>
+					<!-- Account notes -->
+					<% if(currentUser && currentUser.isAdmin){ %>
+
+					<h4 class="card-title text-capitalize"><%= user.firstName %>'s Notes</h4> 
+					<form action="/notes/create" method="POST" class="text-center mb-3">
+						<input type="hidden" id="user_id" name="user_id" value="<%= user._id %>">
+						<button class="text-capitalize btn btn-sm btn-success" href="">Make a new Note</button>
+					</form>
+					<ul class="list-group list-group-flush">				
+						<% notes.forEach(function(note) { %>
+						<li class="list-group-item">
+							<p class="card-text"><span class="font-weight-bold sr-only">Note:<br>
+							</span><%= note.notes %>		
+							</p>
+							<div class="float-right">
+								<form class="delete-form myForm"  action="/notes/<%= note._id %>?_method=DELETE" method="POST">
+									<input type="hidden" id="user_id" name="user_id" value="<%= user._id %>">
+									<button type=submit class="btn btn-sm btn-danger delete">Delete</button>
+								</form>
+							</div>	
+						</li>	
+						<% }); %>
+					</ul>
+					<% } %>
+				</div>
+
+			<% } %>
+			
+			<!------------ATNs--------------->
+			<% if(user.timeZone != null){ %>
+				<div class="col-lg-4 mb-4">
+				
+					<div class="card">
+						<div class="card-body">
+							<h3 class="card-title text-capitalize"><%= user.firstName %>'s ATNs</h3>
+							<form action="/appointments/create" method="POST" class="text-center mb-3">
+									<input type="hidden" id="user_id" name="user_id" value="<%= user._id %>">
+								<button class="text-capitalize btn btn-sm btn-success" href="">Make a new ATN</button>
+							</form>
+						</div>
+					</div>
+					<div class="accordion">
+						<% appointments.forEach(function(appointment) { %>
+							<div class="card m-0">
+								<button class="btn btn-light" data-toggle="collapse" data-target="#<%= appointment._id %>" aria-expanded="false" aria-controls="<%= appointment._id %>">
+									<div class="font-weight-bold" id="heading-<%= appointment._id %>"><%= appointment.appointmentName %> <i class="fa fa-caret-down float-right fa-2x"></i></div>
+								</button>
+								<div id="<%= appointment._id %>" class="collapse" aria-labelledby="heading-<%= appointment._id %>" data-parent=".accordion">
+									<div class="card-body">
+										<p class="card-text">
+											<span class="font-weight-bold">Notification Title:<br /> </span><%=
+											appointment.appointmentName %>
+										</p>
+										<div class="float-right">
+											<% if(currentUser && appointment.author.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+		
+											<form
+												action="/appointments/<%= appointment._id %>/edit"
+												method="PUT"
+												class="text-center mb-3">
+		
+												<input type="hidden" id="user_id" name="user_id" value="<%= user._id %>" />
+												<button class="text-capitalize btn btn-sm btn-success" href="">Edit</button>
+											</form>
+		
+											<form
+												class="delete-form myForm"
+												action="/appointments/<%= appointment._id %>?_method=DELETE"
+												method="POST">
+												<input type="hidden" id="user_id" name="user_id" value="<%= user._id %>" />
+												<button type="submit" class="btn btn-sm btn-danger delete">Delete</button>
+											</form>
+											<% } %>
+										</div>
+		
+										<p>
+											<span class="text-capitalize font-weight-bold">Time Zone:</span> <br />
+											<%= appointment.timeZone %>
+										</p>
+										<p>
+											<span class="font-weight-bold">Appointment Time:</span> <br />
+											<%= moment(appointment.appointmentTime).tz(appointment.timeZone).format("YYYY-MM-DD hh:mm a") %>
+										</p>
+
+										<% if ( ! user.isHospitality ) { %>
+										<p class="text-capitalize">
+											<span class="font-weight-bold">Repeating ATN:</span> <br />
+											<% if (appointment.repeatAtn) { %>
+												<% if (appointment.repeatType == 1) { %>
+											
+													<% if(appointment.appointmentDays.includes(1)){ %>
+															<%= 'Monday' %>
+		
+													<% }if(appointment.appointmentDays.includes(2)){ %>
+															<%= 'Tuesday' %>
+		
+													<% }if(appointment.appointmentDays.includes(3)){ %>
+															<%= 'Wednesday' %>
+		
+													<% }if(appointment.appointmentDays.includes(4)){ %>
+															<%= 'Thursday' %>
+		
+													<% }if(appointment.appointmentDays.includes(5)){ %>
+															<%= 'Friday' %>
+		
+													<% }if(appointment.appointmentDays.includes(6)){ %>
+															<%= 'Saturday' %>
+		
+													<% }if(appointment.appointmentDays.includes(7)){ %>
+															<%= 'Sunday' %>
+		
+													<% } %>
+												<% } else { %>
+													<%= 'Monthly' %>
+												<% } %>
+											
+											<% } else { %>
+												<%= 'N/A' %>
+											<% } %>
+										</p>
+										<p class="text-capitalize">
+											<span class="text-capitalize font-weight-bold">Escalation:<br /></span> <%= appointment.escalation %>
+										</p>
+										<% } %>
+
+									</div>
+								</div>
+							</div>
+						<% }); %>
+					</div>
+					<div class="mt-4" style="box-shadow:2px 2px 10px #cbc6c6">
+						<a target="_blank" href="https://www.youtube.com/watch?v=UqGQUYkW0bw&feature=youtu.be">
+							<img style="width:100%;height:auto;" alt="image one" src="https://mediaanduserfiles.s3.amazonaws.com/Button_i96wzy.png" />
+						</a>
+					</div>
+				</div>
+					
+				
+				<% } %>
+			</div>
+		</div>
+	  
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+	
+	
+	<script type="text/javascript">
+		$('.myForm').submit(function(event){
+			event.preventDefault();
+	
+			Swal.fire({
+			  title: 'Are you sure?',
+			  text: "You won't be able to revert this!",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  if (result.value) {
+				this.submit();
+			  }
+			})
+		});
+	</script>
+	
+	
+	<% if ( ! user._id.equals(currentUser._id) ) { %>
+	<script>
+		$( '.ban-or-unban-user .ban' ).click( e => {
+			e.preventDefault();
+	
+			Swal.fire({
+				title: `Ban <%= user.firstName %> <%= user.lastName %>`,
+				input: 'text',
+				text: 'Ban Reason',
+				inputPlaceholder: 'Bill not paid...',
+				inputValidator: (value) => !value ? 'You need to give a reason!' : null,
+				inputAttributes: {
+					autocapitalize: 'off',
+				},
+				showCancelButton: true,
+				confirmButtonColor: '#dd7a33',
+				cancelButtonColor: '#888',
+				confirmButtonText: 'Ban Now',
+				showLoaderOnConfirm: true,
+				preConfirm: (reason) => {
+					return $.ajax({
+						url: `/users/<%= user._id %>/ban-unban`,
+						type: 'POST',
+						data: {ban: true, reason},
+						success: result  => {
+							const banned = typeof result.banned && result.banned;
+							let msg = banned ?
+								'User banned!' : 'Failed to ban user.';
+	
+							if ( banned ) setTimeout( () => location.reload(true), 1500 );
+	
+							Swal.fire({
+								text: msg,
+								icon: banned ? 'success' : 'error',
+								showConfirmButton: false,
+								showCancelButton: false,
+							});
+						}
+					});
+				},
+				allowOutsideClick: () => !Swal.isLoading()
+			});
+	
+			return false;
+		} );
+	
+		$( '.ban-or-unban-user .unban' ).click( e => {
+			e.preventDefault();
+	
+			Swal.fire({
+				title: `Unban <%= user.firstName %> <%= user.lastName %>`,
+				showCancelButton: true,
+				confirmButtonColor: '#dd7a33',
+				cancelButtonColor: '#888',
+				confirmButtonText: 'Unban Now',
+				showLoaderOnConfirm: true,
+				preConfirm: () => {
+					return $.ajax({
+						url: `/users/<%= user._id %>/ban-unban`,
+						type: 'POST',
+						data: {ban: false},
+						success: result  => {
+							const unbanned = ! (typeof result.banned !== "undefined" && result.banned);
+							let msg = unbanned ?
+								'User unbanned!' : 'Failed to unban user.';
+	
+							if ( unbanned ) setTimeout( () => location.reload(true), 1500 );
+	
+							Swal.fire({
+								text: msg,
+								icon: unbanned ? 'success' : 'error',
+								showConfirmButton: false,
+								showCancelButton: false,
+							});
+						}
+					});
+				},
+				allowOutsideClick: () => !Swal.isLoading()
+			});
+	
+			return false;
+		} );
+	
+	</script>
+	<% } %>
+	
+	
+	<%- include ("../partials/newFooter") %>
+	
+	<% } %>
+
+	

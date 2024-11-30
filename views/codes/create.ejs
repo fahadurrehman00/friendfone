@@ -1,0 +1,84 @@
+<%- include ("../partials/header") %>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+	
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+
+<style>
+	.form-signin{
+		max-width: 500px;
+	}
+	label{
+		color: white;
+	}
+	#datetimepicker1 > input{
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+	.input-group-addon > span{
+		border-top-right-radius: 10px !important;
+		border-bottom-right-radius: 10px !important;
+		background-color: #941c99 !important;
+		color: white !important;
+	}
+	textarea{
+		height: 200px !important;
+		background: transparent !important;
+	  	color: transparent;
+	}
+	.back-btn{
+		border: 1px solid white;
+		color: white !important;
+		border-radius: 10px !important;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="register mt-5">
+				Create a Promo Code
+			</h4>
+			<form action="/codes" class="form-signin" method="POST">
+				<label for="codes" class="sr-only">Code</label>
+				<input type="text" id="demo" class="form-control ml-0 promo" placeholder="promo code here" name="codes" style="width: 62%; border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important" required>
+				<a class=" register btn btn-lg btn-light" style="margin-left: 61%; margin-top: -20%" onclick="myFunction()">Generate Code</a>
+					
+				<label for="codeAmount" class="sr-only">Amount</label>
+				<input type="text" id="codeAmount" class="form-control ml-0" placeholder="amount" name="codeAmount" required ><br>
+				
+				
+				  <button class="register btn btn-lg btn-success btn-block" id="code" type="submit">Generate Code</button>
+				<br>
+				
+					
+			 		<a class="btn btn-lg btn-block register back-btn" href="/admin" role="button">Go Back</a>
+		</form>
+		</div>
+	
+	</div>	
+</div>
+		
+
+<script>
+function myFunction() {
+        var hash = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012346789";
+        var random = '';
+        for(var i = 0; i < 7; i++){
+            random += hash[parseInt(Math.random()*hash.length)];
+        }
+        console.log(random);
+    	document.getElementById("demo").value = random;
+}        
+        
+
+	
+</script>
+
+    <!-- JavaScript -->
+    
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	  
+<%- include ("../partials/newFooter") %>

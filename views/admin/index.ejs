@@ -1,0 +1,291 @@
+<%- include ("../partials/header") %>
+
+<style>
+    .search {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .search-btn {
+        margin-top: -2px !important;
+        padding-top: 12px !important;
+        border-radius: 0 5px 5px 0 !important;
+    }
+
+    h3 {
+        text-align: center;
+        padding-top: 4%;
+    }
+
+    h5 {
+        text-align: center;
+        padding-top: 4%;
+        margin-left: -45px !important;
+    }
+
+    /*li {
+        list-style: none;
+        margin-top: 5%;
+    }*/
+	/* The Modal (background) */
+	
+		.popup-heading{
+		text-align:center;
+		padding-top: 0px;
+	}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.form-signin {
+    max-width: 100%;
+    padding: 15px 0;
+    margin: auto;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
+
+<h3>Admin page</h3>
+
+<div class="container">
+
+	<div class="d-flex justify-content-between my-3">
+		<div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<% if (unverified !== null && unverified.length != 0) { %>
+					<span class="badge badge"> <%= unverified.length %> </span>
+					<% } %>
+					<i class="fa fa-bell"></i>
+				  </button>
+				<div class="dropdown-menu">
+				<% if (unverified !== null && unverified.length != 0) { %>
+					<% unverified.forEach(function(uv) { %>
+                    <% if ( uv.appointmentId != null ) { %>
+					<a class="dropdown-item" target="_blank" 
+					   href="/users/<%= uv.appointmentId.author %>">
+						<%= uv.appointmentId.phoneNumber %> Has missed your ATN at 
+						<%= moment( uv.timestamp, 'YYYY/MMM/DD').tz('US/Eastern').format('MM/DD/YYYY HH:mm a'); %>
+					</a>
+                    <% } %>
+				<div>
+			
+					</div>   
+				<% }); } else { %>
+					<a class="dropdown-item" href="#">N/A</a>
+				<% } %>
+				</div>
+			</div>
+		</div>
+
+        <!-- create hospitality account -->
+        <div>
+            <button type="button" onclick="location.href='/hospitality-account'" class="btn btn-success p-2">Create Hospitality account</button>
+        </div>
+	</div>
+
+    <div class="row">
+        <div class="col-md-4">
+
+            <form action="/admin" method="GET" class="form-signin form-inline">
+
+
+                <div class="form-group">
+
+                    <input type="text" class="form-control search" id="search" name="search"
+                           placeholder="Search by # or Name">
+
+                    <input type="submit" class="btn btn-success p-2 mb-2 search-btn" value="Search">
+
+                </div>
+
+            </form>
+
+
+        </div>
+		
+	<!--create a promo code starts here-->
+	<div class="col-md-3 mt-3">
+		 <input type="submit" onclick="location.href='/codes/create'" class="btn btn-success p-2"
+                   value="Create A Promo Code">
+	</div>	
+	<!---promo codes start here---->
+	<div class="col-md-2 mt-3">
+			<input type="submit" class="btn btn-info p-2" 			   
+				   onclick="document.getElementById('id01').style.display='block'"
+				   value="Promo Codes">
+	</div>	
+		
+	<div id="id01" class="modal modal-dialog-centered modal-dialog-scrollable">
+ 		<div class="modal-content">
+			<h1 class="popup-heading">
+				Promo Codes
+			</h1>
+			<hr>
+            <div class="py-1 px-3">
+                <% codes.forEach(function(code) { %>
+                    <div class="row no-gutters my-2 promo-code" data-id="<%= code._id %>" data-code="<%= code.codeAmount %>">
+                        <div class="col-6">
+                            <span class="font-weight-bold">Code:</span> &nbsp; <%= code.codes %>
+                        </div>
+                        <div class="col-5">
+                            <span class="font-weight-bold">Amount:</span> &nbsp; <%= code.codeAmount %>
+                        </div>
+                        <div class="col-1 text-center">
+                            <a class="font-weight-bold py-0 px-2 bg-danger text-white rounded remove-promo-code" style="cursor:pointer;"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+		</div>	
+	</div>
+
+        <!-- create Admin -->
+
+        <div class="col-md-2 mt-3">
+            <input type="submit" onclick="location.href='/createAdmin'" class="btn btn-success p-2"
+                   value="Create An Admin">
+            <!-- <form action="admin/create" method="POST" class="text-center mb-3">
+
+                <button class="text-capitalize btn btn-sm btn-success">Create An Admin</button>
+            </form> -->
+
+
+        </div>
+
+        <% if (noMatch != null) { %>
+            <div class="col-md-12">
+                <div class="black-headings text-lowercase"><%= noMatch %></div>
+            </div>
+        <% } %>
+    </div>
+
+</div>
+
+
+<div class="container">
+
+    <h4 class="text-center my-2 font-weight-bold">Total User: <%= users.length %></h4>
+
+    <div class="row text-center" id="user-grid">
+
+        <% users.forEach(function(user){ %>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="card">
+
+                    <img class="card-img" src="<%= user.image %>" class="card-img-top" alt="<%= user.firstName %>">
+
+                    <div class="card-body">
+
+                        <p class="card-title h5 mb-2"><%= user.firstName %> <%= user.lastName %></p>
+
+                        <p class="card-title small font-weight-bold"><%= user.username %></p>
+
+                        <% if ( user.banned ) { %>
+                            <p class="text-danger small">Banned</p>
+                        <% } else { %>
+                            <p class="text-success small">Active</p>
+                        <% } %>
+
+                        <a href="/users/<%= user._id %>" class="btn btn-primary">More Info</a>
+
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	// Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+    }
+
+    // Remove promo code
+    jQuery(document).ready(function($) {
+        $(document).on( 'click', '.remove-promo-code', async e => {
+            e.preventDefault();
+
+            let elm = $( e.currentTarget );
+            let parent = elm.parents( '.promo-code' );
+
+            /* if ( ! confirm( 'Confirm delete?' ) ) return false; */
+
+            const res = await Swal.fire({
+                title: 'Are you sure?',
+                /* text: "You won't be able to revert this!", */
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#949494',
+                confirmButtonText: 'Yes, delete it!'
+            });
+
+            if ( ! res.isConfirmed ) return;
+
+            const codeId = parent.attr( 'data-id' );
+
+            // Delete the promo code
+            $.ajax({
+                url: '/codes',
+                type: 'DELETE',
+                data: {codeId},
+                success: result  => {
+                    const deleted = typeof result.deleted && result.deleted;
+                    const msg = deleted ?
+                        'Promo code deleted successfully!' : 'Failed to delete promo code.';
+
+                    if ( deleted ) parent.remove();
+
+                    Swal.fire({
+                        text: msg,
+                        icon: deleted ? 'success' : 'error'
+                    });
+                }
+            });
+
+            return false;
+        } );
+    });
+</script>
+
+<%- include ("../partials/newFooter") %>

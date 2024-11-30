@@ -1,0 +1,40 @@
+<%- include ("../partials/header") %>
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+
+<style>
+	label{
+		color: white;
+	}
+	#datetimepicker1 > input{
+		border-top-right-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
+	}
+	.input-group-addon > span{
+		border-top-right-radius: 10px !important;
+		border-bottom-right-radius: 10px !important;
+		background-color: #941c99 !important;
+		color: white !important;
+	}
+</style>
+<div class="container">
+	<div class="row user">
+		<div class="col-md-12">
+	<h4 class="black-headings mt-5 register">
+	Pin Verification
+	</h4>
+ 
+<form class="form-signin" action="/appointments/verify-pin/?token=<%= pinToken %>" method="POST">
+	<label class="sr-only">Please Enter Your PIN</label>
+<input type="number" class="form-control" placeholder="Please enter your Pin here" name="enteredPin" id="pin" pattern="[0-9]{4}" maxlength="4" required>
+	<button class="btn btn-lg btn-success btn-block register2" type="submit">Verify Pin</button>
+</form>
+	</div>
+</div>
+</div>
+
+<!--latest jquery just for hamburger menu of navbar in mobile view --->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<%- include ("../partials/newFooter") %>

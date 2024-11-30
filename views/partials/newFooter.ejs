@@ -1,0 +1,108 @@
+<div id="footer">
+	<div class="container-fluid" id="footer_container">
+		<div class="row">
+			<div class="col-md-3 col-sm-12  footer_part footer_part_one">
+				<div class="footer_part_one_images">
+					<a href="/home">
+						<img src="https://mediaanduserfiles.s3.amazonaws.com/logo_bottom.png" alt="friendfone logo">
+					</a>
+					<a href="https://ArvoGP.com" target="_blank">
+						<img src="https://mediaanduserfiles.s3.amazonaws.com/Arvo_1_kqptdx.png" alt="parterners logo">
+					</a>
+				</div>
+				<div class="info">
+					<p>
+						FriendFone is a Check-In application designed to improve Health, Productivity, & Safety.
+					</p>
+					<p>
+						FriendFone is a proud subsidiary of Arvo Growth Partners.
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-12 footer_part footer_part_two">
+				<h1 class="footer_part_header big_header">Partners</h1>
+					<ul>
+						<li>Apps</li>
+						<li>Cities</li>
+						<li>Employers</li>
+					 	<li>Individuals</li>
+						<li>Health Care Providers</li>
+						<li>Realtors</li>
+						<li>RideShare</li>
+						<li>Schools</li>
+						<li>Travelers</li>
+					</ul>
+			</div>
+			<div class="col-md-3 col-sm-12 footer_part">
+				<h1 class="footer_part_header big_header">Pages</h1>
+				<ul>
+					<li><a class="routes" href="/home">Home</a></li>
+					<li><a class="routes" href="/customers">Customer</a></li>
+					<li><a class="routes" href="/concierge">Concierge</a></li>
+				 	<li><a class="routes" href="/pricing">Pricing</a></li>
+					<li style="display:none"><a class="routes" href="/blog">Blog</a></li>
+					<li style="display:none"><a class="routes" href="/career">Career</a></li>
+					<li><a class="routes" href="/support">Support</a></li>
+					<li><a class="routes" href="https://ArvoGP.com" target="_blank">Arvo</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-sm-12 footer_part footer_part_four ">
+				<h1 class="footer_part_header big_header">Contact</h1>
+				<ul>
+					<li>
+						<a class="contact_link" href="callto:(833) 462-2786" >
+							Phone:(833) 462-2786
+						</a>
+					</li>
+					<li>
+						<a class="contact_link"  href="mailto:FF@ArvoGp.com">
+							Email:FF@ArvoGp.com
+						</a>
+					</li>
+					<li>
+						<a class="contact_link" href="https://www.tidio.com/talk/oohi4ck9zmzjoekpsft3cp6h9cnitwej" target="_blank">
+							Click Here to Chat
+						</a>
+					</li>
+					<li>
+						Address:3218 East Colonial Drive, STE G,
+						Orlando,FL 32803
+					</li>
+					<li id="footer_social_media_sources">
+						<a href="https://www.facebook.com/FriendFoneApp" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href="https://twitter.com/friend_fone" target="_blank">
+							<i class="fab fa-twitter" target="_blank"></i>
+						</a>
+						<a href="https://www.instagram.com/friend_fone/" target="_blank">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://www.tiktok.com/@friendfone.com" target="_blank">
+							<i class="fab fa-tiktok"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="last_footer_section">
+			<% if(!currentUser) { %>
+				<div class="buttons">
+					<a href="/login" class="btn btn-success big_button_link">Login</a>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success big_button_link">Sign up</a>
+				</div>
+			<% } %>
+			<div id="copyright">
+				<p></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+document.querySelectorAll('.us-phonenumber-mask').forEach( v => v.addEventListener( 'input', e => {
+	var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+	e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+} ) );
+</script>

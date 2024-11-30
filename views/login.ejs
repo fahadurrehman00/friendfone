@@ -1,0 +1,40 @@
+<%- include ("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/registeration.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+<style>
+input[type="text"],[type="email"] ,[type="password"],[type="tel"]
+{
+	width: 100% !important;
+
+}
+	.back-btn{
+		border: 1px solid white;
+		color: white !important;
+		border-radius: 10px !important;
+	}
+</style>
+<div class="user">
+	<div class="row">
+ <div class="col-md-12">
+	 <form class="form-signin frame" action="/login" method="POST">
+  <h3 class="register mb-3 font-weight-normal">Sign in</h3> <hr>
+  <label for="phoneNumber" class="sr-only">Phone Number</label>
+  <input type="tel" id="firstName" class="form-control ml-0" placeholder="Phone Number (Example: 1234567890)" name="phoneNumber" required autofocus pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control ml-0" placeholder="Password" name="password" required>
+  <button class="register btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+  <button class="mt-2 forgot-btn"><a class="register btn btn-lg btn-block" href="/forgot">Forgot Password</a></button>
+</form>
+	  <div class="form-signin frame">
+		 <a class="btn btn-lg btn-block register back-btn" href="/home" role="button">Go Back</a>
+	 </div>
+	
+ </div>	
+</div>
+</div>
+
+<!--latest jquery just for hamburger menu of navbar in mobile view --->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<%- include ("./partials/newFooter") %>

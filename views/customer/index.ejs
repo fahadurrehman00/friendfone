@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Friend Fone | An Education & Medical Software</title>
+	<link
+		rel="icon"
+		type="image/svg"
+		href="https://mediaanduserfiles.s3.amazonaws.com/favicon_qgcraf_v6duoh.svg"
+	/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/		bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"
+	>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/stylesheets/new/header.css" />
+	<link rel="stylesheet" href="/stylesheets/new/main.css" />
+	<link rel="stylesheet" href="/stylesheets/new/responsive.css" />
+	<link rel="stylesheet" href="/stylesheets/new/footer.css" />
+	<link rel="stylesheet" href="/stylesheets/new/customer.css" />
+	<script src="//code.tidio.co/oohi4ck9zmzjoekpsft3cp6h9cnitwej.js" async></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171459783-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "UA-171459783-1");
+	</script>
+</head>
+<body>
+	<%- include ("../partials/myHeader") %>
+	<%- include ("./learnMoreForm") %>
+	<section class="services customer">
+		<div class="service_parent">
+			<div class="text-center">
+				<h3>App Integration</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Care Providers</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Local Communities</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Employers & Workplaces</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Individual Users</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Brokers & Realtors</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Deliveries & RideShare</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>School & Universities</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Travel & Transport</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+			<div class="text-center">
+				<h3>Everyone Else</h3>
+				<% if (!currentUser) { %>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-2 big_button_link">
+						Sign Up
+					</a>
+				<% } else { %>
+					<a href="/users/<%= currentUser.id %>" class="btn btn-success mb-2 big_button_link">
+						Dashboard
+					</a>
+				<% } %>
+				<br>
+				<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success big_button_link">
+					Learn More
+				</a>
+			</div>
+		</div>
+	</section>
+	<%- include ("../partials/modal") %>
+	<%- include ("../partials/about") %>
+	<%- include ("./intergrationModal") %>
+	<section class="service_details customer">
+		<div class="container-fluid service_details_parent">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For App Integration</h3>
+					<p>
+						FriendFone has the ability to provide an additional 
+						revenue stream for existing applications. By
+						providing memberships to new and existing users, 
+						businesses can take a cut of the action, while 
+						providing an additional service that your users are
+						sure to love. 
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal"  class="btn btn-success mb-4 big_button_link">
+						Learn How We Can Integrate With Your Platform
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Care Providers</h3>
+					<p>
+						Looking to expand the Care provided to your patients after they leave your facility? Our software is able to provide your patients with round-the-clock Care through a check-in system. The best part, you’ll be a partner that provides your business with additional revenue.
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Find Out How To Provide Additional Care
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Communities</h3>
+					<p>
+						Improving safety in a community can be a challenge By partnering with FriendFone, we can provide safety features for community residents at a discounted rate. Our system helps reduce the number of 911 calls, missing persons cases, and active police calls, thus lowering expenses. 
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Add An Additional Level Of Safety To Your City
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Employers</h3>
+					<p>
+						Creating value for employees is something that every employer tried to do. Show your Employees you Care about their well being and safety by partnering with us to offer discount memberships to employees and their families.
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Provide Additional Benefits To Employees
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Individual</h3>
+					<p>
+						Ensure your personal safety and well being while keeping your independence. Take the steps to a healthier, productive, and safer life.
+					</p>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-4 big_button_link">
+						Get Signed Up Today
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Realtors</h3>
+					<p>
+						Having a Career where you get to meet new people everyday can be a blessing and a curse. FriendFone is here to help realtors make it to appointments on time and to make sure they make it home safe after a day of showings. 
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Take The First Step To Protecting Your Realtors
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For RideShare</h3>
+					<p>
+						RideSharing is a great way to get to know your local community, however, it could be worrisome. Get an additional layer of protection with FriendFone. With the ability to have regular check-ins, FriendFone provides an extra layer of security while you’re on the road.
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Gain Additional Safety While Ride Sharing
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Education</h3>
+					<p>
+						Being able to make your school a more safe and productive environment is something that all schools strive for. FriendFone is able to provide all the resources needed to design a space where safety and productivity blossom.
+					</p>
+					<a role="button" data-bs-toggle="modal" data-bs-target="#learnMoreFormModal" class="btn btn-success mb-4 big_button_link">
+						Improve The Productivity & Safety Of Students
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For Travelers</h3>
+					<p>
+						Adventuring to new areas is a must for most. Make sure that you’ve got a friend wherever you go! FriendFone is able to check-in on your regardless of your location. Not only will we make sure you’re having a great time, we’ll make sure you’re still safe while doing so.
+					</p>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-4 big_button_link">
+						Begin Traveling Safer & Smarter
+					</a>
+				</div>
+				<div class="col-md-6 col-sm-12 text-center">
+					<h3>FriendFone For All</h3>
+					<p>
+						Our software is designed to ease day to day life for all users. We offer checks-ins and reminders that need to be verified so you’ll never miss an appointment,? forget a task, or skip your medication. With all these great features and much more, Sign Up today! 
+					</p>
+					<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success mb-4 big_button_link">
+						Start Using FriendFone
+					</a>
+
+				</div>
+		</div>
+		</div>
+	</section>
+	<%- include ("../partials/partnership") %>
+	<%- include ("../partials/newFooter") %>
+	<script type="text/javascript">
+		const ham = document.querySelector('#ham');
+		// const videoModal = document.querySelector('#videoModal');
+		const mobile_nav = document.querySelector('.nav_lists');
+		const copyright = document.querySelector('#copyright p');
+		const serviceSection= document.querySelector('.services');
+
+
+		ham.addEventListener('click', (e) => {
+			e.preventDefault();
+			mobile_nav.classList.toggle('extend');
+		});
+
+
+		document.addEventListener("DOMContentLoaded", (e) => {  
+			copyright.textContent = `© Copyright ${new Date().getFullYear()} FriendFone. All Rights Reserved.`
+		})
+
+		serviceSection.addEventListener('click', (e) => {
+			if(e.target.tagName = 'a') {
+				// two input that has same name attribute in the page but as it appear top of the page it will be selected .
+				const inp = document.querySelector('input[name=page_name]');
+				inp.value = `customers page where "` + e.target.parentElement.children[0].textContent + `" is the header text` ;
+			}
+		})
+
+	</script>
+</body>
+</html>

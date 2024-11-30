@@ -1,0 +1,87 @@
+<div class="main_view">
+	<div class="mynav">
+		<div class="brand_logo">
+			<div class="logo">
+				<a href="/">
+					<img src="https://mediaanduserfiles.s3.amazonaws.com/logo_bottom.png" alt="logo">
+				</a>
+			</div>
+			<div class="mobile_social_list for_mobile">
+				<a href="https://www.facebook.com/FriendFoneApp" target="_blank">
+					<i class="fab fa-facebook"></i>
+				</a>
+				<a href="https://twitter.com/friend_fone"  target="_blank">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="https://www.instagram.com/friend_fone/"  target="_blank">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="https://www.tiktok.com/@friendfone.com/"  target="_blank">
+					<i class="fab fa-tiktok"></i>
+				</a>
+			</div>
+			<div class="mobile_button for_mobile">
+				<a id="ham">
+					<i class="fas fa-bars"></i>
+				</a>
+			</div>
+		</div>
+		<div class="nav_lists">
+			<ul class="social_list">
+				<li id="social_media_sources">
+						<a href="https://www.facebook.com/FriendFoneApp" target="_blank">
+							<i class="fab fa-facebook"></i>
+						</a>
+						<a href=" https://twitter.com/friend_fone" target="_blank"> 
+							<i class="fab fa-twitter"></i>
+						</a>
+						<a href="https://www.instagram.com/friend_fone/" target="_blank">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://www.tiktok.com/@friendfone.com" target="_blank">
+							<i class="fab fa-tiktok" target="_blank"></i>
+						</a>
+					</li>
+					<% if (!currentUser) { %> 
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register/?redirectfrom=<%= pathname %>">Sign Up</a></li>
+					<% } else { %>
+						<li>
+							<a href="/users/<%= currentUser.id %>" style="color:#0B4DCD;">
+								<i class="fas fa-user" style="color:#0B4DCD;"></i> <%= currentUser.firstName %>
+							</a>
+						</li>
+						<li>
+							<a href="/logout">
+								Log Out
+							</a>
+						</li>
+					<% } %>
+			</ul>
+			<ul class="nav_list">
+					<li><a href="/home">Home</a></li>
+					<li><a href="/customers">Customers</a></li>
+					<li><a href="/concierge">Concierge</a></li>
+					<li><a href="/pricing">Pricing</a></li>
+					<li style="display:none"><a href="/blog">Blog</a></li>
+					<li style="display:none"><a href="/career">Careers</a></li>
+					<li><a href="/support">Support</a></li>
+			</ul>
+		</div>
+	</div>
+	<% if(pathname !== '/') { %>
+		<div class="two_buttons">
+			<h1 class="main_header_one"> <%= pathname %> </h1>
+			<h1 class="main_header_two"> <%= headlines[pathname] %> </h1>
+		</div>
+	<% } else {  %>
+		<div class="two_buttons">
+			<a href="#about" class="btn btn-success big_button_link">About Us</a>
+			<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success big_button_link">Sign Up</a>
+		</div>
+		<video id="videoBG" poster="https://mediaanduserfiles.s3.amazonaws.com/Background_Photo_1_qwsggp.png" muted loop autoplay>
+   	 <source src="https://mediaanduserfiles.s3.amazonaws.com/bg-video_bkom3a.mp4" type="video/mp4">
+		</video>
+	<% } %>
+
+</div>

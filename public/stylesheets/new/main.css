@@ -1,0 +1,192 @@
+.section_processes{
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/a176716205951f374b88a00d77d89a3e_1_jcunu3.png');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.full_container{
+	/*width: 100%;*/
+	height: 100%;
+	background-color:rgba(47,46,65,0.7);
+}
+
+.full_container h1{
+	color: #f5f5fe;
+	padding: .5em 0;
+}
+
+.parent {
+	background-color: #2f2e40;
+	margin: 0 3em;
+}
+
+.parent>div{
+	background-color: #47445f;
+}
+.parent>div img {
+	display: block;
+	width: 100%;
+	height: 50%;
+	margin-top: 1em;
+}
+.parent>div p {
+	color: #f5f5fe;
+}
+
+.btn_parent {
+	text-align: center;
+	margin-top: 1em;
+	padding-bottom: 1em;
+}
+
+.section_intro .first_part {
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/student_f6emzl.png') center no-repeat;
+	background-size: cover;
+	padding: 0;
+}
+
+.first_part div{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 255, 87, 0.5) 
+}
+
+.details {
+	background-image: url('https://mediaanduserfiles.s3.amazonaws.com/detials-bg_mqif6w.png');
+	background-position: center;
+	background-size: cover;
+}
+
+.details_container{
+	background-color: rgba(255, 0, 0, 0.15);
+}
+
+.detail_box h1 {
+	margin: .8em 0 0.2em 0;
+}
+
+.detail_box p {
+	margin-bottom: 2em;
+}
+
+.partnership{
+	text-align: center;
+	color: #3C3C3C;
+}
+
+.partnership h1 {
+	font-size: 2em;
+	padding: 1em .2em .2em .2em;
+}
+.partnership p {
+	max-width: 70%;
+	margin: 0 auto .5em; auto;
+	font-size: 1.5em;
+}
+
+.partnership button {
+	text-align: center;
+	border:none;
+	color: #FFFFFF;
+	background-color: #28AE60;
+	padding: 0.7em 1.5em;
+	border-radius: 2.5em;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.about_section{
+	overflow: hidden;
+}
+
+.about_part_one{
+	position: relative;
+	padding:0 0.5em 1em 0.5em;
+}
+
+.about_part_one .skew_elem {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	transform: skew(30deg); 
+	left: 15%;
+	z-index: 100;
+}
+
+.about_part_one div:nth-child(2) {
+	position: relative;
+	text-align: center;
+	z-index: 1000;
+}
+.about_part_one h1{
+	font-size: 1.5em;
+	margin-top: 1em;
+}
+
+.about_part_one p {
+	font-weight: normal;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+.about_part_two {
+	padding: 0;
+}
+
+.about_part_two .main_child{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	background: url('https://mediaanduserfiles.s3.amazonaws.com/About_Us_Photo_zqekif.png') center no-repeat;
+	background-size: cover;
+}
+
+.about_part_two .second_child {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 122, 0, 0.4);
+}
+
+.second_child>div {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 50%;
+	margin-right: -15%;
+	top: 50%;
+	margin-top: -25px
+}
+
+/*this is root style of every form on found on  almost every page */
+form input {
+	width: 60%;
+	color: white;
+	background-color: #28AE60;
+	margin-top: .3em;
+	padding: .3em .5em;
+	border:1px solid white;
+	border-radius: 10px;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+.form_big_button_link{
+	background-color: #28AE60;
+	border:none;
+	margin-top: 1em;
+	padding: 0.7em 1.5em;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+form button {
+	margin-top: 1em;
+}
+

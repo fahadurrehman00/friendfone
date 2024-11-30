@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Friend Fone | An Education & Medical Software</title>
+	<link
+		rel="icon"
+		type="image/svg"
+		href="https://mediaanduserfiles.s3.amazonaws.com/favicon_qgcraf_v6duoh.svg"
+	/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/		bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"
+	>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="/stylesheets/new/header.css" />
+	<link rel="stylesheet" href="/stylesheets/new/main.css" />
+	<style type="text/css">
+		.main_view {
+			background-image: none;
+		}
+		.two_buttons {
+			top: 70%;
+		}
+	</style>
+	<link rel="stylesheet" href="/stylesheets/new/responsive.css" />
+	<link rel="stylesheet" href="/stylesheets/new/footer.css" />
+	<script src="//code.tidio.co/oohi4ck9zmzjoekpsft3cp6h9cnitwej.js" async></script>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171459783-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-171459783-1');
+</script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171459783-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "UA-171459783-1");
+	</script>
+</head>
+<body>
+	<%- include ("../partials/myHeader") %>
+	<%- include ("../partials/modal") %>
+	<%- include ("../partials/about") %>
+	<%- include ("../partials/process") %>
+	<section class="section_intro">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 first_part">
+				<div></div>
+			</div>
+			<div class="col-md-6 second_part text-center pt-2 pb-3">
+				<h1 class=".big_header">A Leader In Safety </h1>
+				<p>
+					With the growth of the internet, communication and
+					online relationships have blossomed. While the
+					majority of relationships formed are of good nature,
+					there has been an increase in cases related to cyber
+					Stalking, Abductions, and Trafficking in the US.
+					FriendFone has been created to help combate the 
+					spike in these cases. By offering real-time check-ins,
+					FriendFone is able to ensure an additional level of 
+					safety! We provide direct alerts to emergency 
+					contacts, campus security, friends, or schools in the 
+					event where contact cannot be made. For as little as 
+					10 cents per day, you can have peace of mind!
+				</p>
+				<a href="/register?redirectfrom=<%= pathname %>" class="btn btn-success big_button_link">
+					Give Us A Go
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- start details section -->
+<section class="details">
+	<div class="container-fluid">
+		<div class="row justify-content-around details_container">
+			<div class="col-md-3 detail_box">
+				<h1 class="big_header">100+</h1>
+				<p>Total Organization</p>
+			</div>
+			<div class="col-md-3 detail_box">
+				<h1 class="big_header">20,000+</h1>
+				<p>Total Users</p>
+			</div>
+			<div class="col-md-3 detail_box">
+				<h1 class="big_header">98%</h1>
+				<p>Total Verified ATNS</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end of deatiails section -->
+	<%- include ("../partials/partnership") %>
+	<%- include ("../partials/newFooter") %>
+	<script type="text/javascript">
+		const ham = document.querySelector('#ham');
+		// const videoModal = document.querySelector('#videoModal');
+		const mobile_nav = document.querySelector('.nav_lists');
+		const bgVideo = document.querySelector('#videoBG');
+		const copyright = document.querySelector('#copyright p');
+
+		ham.addEventListener('click', (e) => {
+			e.preventDefault();
+			mobile_nav.classList.toggle('extend');
+		});
+
+		// videoModal.addEventListener('hide.bs.modal', e => {
+		// 	video = document.querySelector('.modal-body video');
+		// 	video.pause();
+		// 	bgVideo.play();
+		// })
+		// videoModal.addEventListener('show.bs.modal', e => {
+		// 	video = document.querySelector('.modal-body video');
+		// 	video.play();
+		// 	bgVideo.pause();
+		// })
+		document.addEventListener('scroll', (e) => {
+			cords = videoBG.getBoundingClientRect();
+			if(cords.bottom < 0) {
+				videoBG.pause();
+			} else {
+				videoBG.play();
+			}
+		});
+
+		document.addEventListener("DOMContentLoaded", (e) => {  
+			copyright.textContent = `© Copyright ${new Date().getFullYear()} FriendFone. All Rights Reserved.`
+		});
+
+	</script>
+</body>
+</html>
